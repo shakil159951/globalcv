@@ -1,0 +1,6 @@
+{
+  "name": "Europass CV & Cover Letter Builder - Europe Work Permit",
+  "description": "European standard Europass CV and Cover Letter generator tailored for Md. Shakil Hossain, optimized for European work permit applications in Agriculture, Logistics, Hospitality, and IT.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
