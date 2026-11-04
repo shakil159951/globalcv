@@ -47,7 +47,7 @@ export const basePersonalInfo = {
   showVisaStatus: false,
   showDeclaration: false,
   showEuropassBanner: true,
-  drivingLicense: 'Motorcycle & Light Vehicle Driving License Holder',
+  drivingLicense: '',
   availability: 'Immediate Joining / Ready for Deployment',
   fatherName: 'Md. Rezaul Islam',
   motherName: 'Mst. Taslima Banu',
@@ -341,7 +341,7 @@ export const sectorPresetsBangladesh: Record<SectorId, SectorPreset> = {
     iconName: 'Truck',
     targetJobTitle: 'Logistics, Warehouse & Dispatch Coordinator',
     summary:
-      'Energetic, tech-savvy, and dependable Operations & Dispatch Associate from Dhaka with strong expertise in inventory cataloging, route navigation, and consignment management. Combines 98% verified accuracy in stock data entry with hands-on experience handling sensitive equipment, operating handheld scanners, and coordinating on-time dispatches. Holder of a valid driving license with extensive familiarity with Dhaka traffic routes.',
+      'Energetic, tech-savvy, and dependable Operations & Dispatch Associate from Dhaka with strong expertise in inventory cataloging, barcode scanning, and consignment management. Combines 98% verified accuracy in stock data entry with hands-on experience handling sensitive equipment, operating handheld scanners, and coordinating on-time warehouse dispatches. Possesses extensive familiarity with Dhaka supply chain routes and dispatch coordination.',
     skills: [
       {
         category: 'Logistics & Warehouse Operations',
@@ -356,7 +356,7 @@ export const sectorPresetsBangladesh: Record<SectorId, SectorPreset> = {
         category: 'Route Navigation & Transport',
         items: [
           'Dhaka Metro Urban Route Navigation (GPS & Mapping Apps)',
-          'Motorcycle & Light Vehicle Safe Driving (Valid BD License)',
+          'Warehouse Order Staging & Consignment Loading Safety',
           'Time-Definite Express Dispatch & Customer Handover',
         ],
       },
@@ -386,7 +386,7 @@ export const sectorPresetsBangladesh: Record<SectorId, SectorPreset> = {
       openingParagraph:
         'I am writing to express my interest in joining your logistics and supply chain operations. With proven hands-on experience in consignment tracking, equipment staging, and inventory data verification with 98% accuracy, I am eager to support your fast-moving dispatch fulfillment.',
       experienceParagraph:
-        'In my professional work, I have managed shipment verification, barcode scanning, and safe transport of delicate equipment. I hold a valid driving license with thorough knowledge of Dhaka routes. My engineering background allows me to master modern warehouse management software and mobile inventory apps quickly.',
+        'In my professional work, I have managed shipment verification, barcode scanning, and safe transport of delicate equipment. I have thorough knowledge of Dhaka routes and warehouse operations. My engineering background allows me to master modern warehouse management software and mobile inventory apps quickly.',
       motivationParagraph:
         'I am active, energetic, and dedicated to meeting strict delivery schedules. I maintain courteous communication with clients and supervisors and prioritize safety in every dispatch.',
       relocationParagraph:
@@ -632,9 +632,9 @@ export const sectorPresetsEurope: Record<SectorId, SectorPreset> = {
     name: 'Logistics & Delivery',
     nameBn: 'ডেলিভারি ও ওয়্যারহাউস (সহজেই কাজ শিখে নেওয়ার মানসিকতা)',
     iconName: 'Truck',
-    targetJobTitle: 'Warehouse Operative & Delivery Courier (Quick Learner)',
+    targetJobTitle: 'Warehouse Operative & Logistics Assistant (Quick Learner)',
     summary:
-      'Proactive, agile, and technology-literate candidate from Bangladesh seeking European Work Permit sponsorship in Warehouse Order Fulfillment, Stacking, and Courier Delivery. Combines a technical background with verified 98% accuracy in inventory data operations, smartphone GPS navigation fluency, and a valid driving license. Highly trainable, physically fit for moving parcels up to 25kg, and dedicated to punctual shift execution and workplace safety.',
+      'Proactive, agile, and technology-literate candidate from Bangladesh seeking European Work Permit sponsorship in Warehouse Order Fulfillment, Stacking, and Logistics Operations. Combines a technical background with verified 98% accuracy in inventory data operations, smartphone GPS navigation fluency, and rapid learning ability. Highly trainable, physically fit for moving parcels up to 25kg, and dedicated to punctual shift execution and workplace safety.',
     skills: [
       {
         category: 'Trainable Warehouse & Delivery Skills',
@@ -642,8 +642,8 @@ export const sectorPresetsEurope: Record<SectorId, SectorPreset> = {
           'Quick Learner of Barcode Scanners, RF Guns & Warehouse Software',
           'Order Picking, Packing & Pallet Stacking Readiness',
           'GPS Route Navigation (Google Maps, Waze, Delivery Apps)',
-          'Valid Driving License Holder (Motorcycle & Light Vehicle)',
-          'Safe Parcel Handling & Clean Driving Mindset',
+          'Safe Parcel Handling & Dispatch Staging Mindset',
+          'Careful Equipment & Pallet Trolley Operation',
         ],
       },
       {
@@ -668,14 +668,14 @@ export const sectorPresetsEurope: Record<SectorId, SectorPreset> = {
       companyCity: 'Bucharest',
       companyCountry: 'Romania',
       date: '2026-11-03',
-      subject: 'Application for Warehouse Operative / Delivery Courier (Work Permit Sponsorship)',
+      subject: 'Application for Warehouse Operative / Logistics Assistant (Work Permit Sponsorship)',
       salutation: 'Dear Hiring Manager,',
       openingParagraph:
-        'I am writing to formally apply for the position of Warehouse Operative / Delivery Courier with your organization. With a strong personal drive, excellent physical fitness, and natural fluency with digital navigation tools, I am eager to join your European logistics team.',
+        'I am writing to formally apply for the position of Warehouse Operative / Logistics Assistant with your organization. With a strong personal drive, excellent physical fitness, and natural fluency with digital navigation tools, I am eager to join your European logistics team.',
       experienceParagraph:
-        'While my formal qualification is a Diploma in Computer Engineering and my recent work has been in facility technical support and high-speed data management (achieving 98% audited accuracy), I am eager to apply my discipline to warehouse fulfillment and delivery routes. My background allows me to master handheld RF scanners, warehouse apps, and route planning instantly.',
+        'While my formal qualification is a Diploma in Computer Engineering and my recent work has been in facility technical support and high-speed data management (achieving 98% audited accuracy), I am eager to apply my discipline to warehouse fulfillment and logistics operations. My background allows me to master handheld RF scanners, warehouse apps, and route planning instantly.',
       motivationParagraph:
-        'I am 24 years old, physically energetic, comfortable lifting cartons up to 25kg, and capable of working active 8-10 hour shifts on my feet. I hold a valid driving license and am accustomed to urban route navigation. I take instructions attentively and pride myself on punctuality, honesty, and careful handling of consignments.',
+        'I am 24 years old, physically energetic, comfortable lifting cartons up to 25kg, and capable of working active 8-10 hour shifts on my feet. I am accustomed to warehouse order sorting, physical goods handling, and digital inventory scanning. I take instructions attentively and pride myself on punctuality, honesty, and careful handling of consignments.',
       relocationParagraph:
         'I hold a valid International Passport (valid >4 years), clean police clearance records, and complete health certificates. I am seeking legal employer sponsorship for a European Work Permit and National Visa D, ready for immediate relocation and long-term commitment.',
       closingParagraph:
@@ -939,20 +939,20 @@ export const sectorPresetsEurope: Record<SectorId, SectorPreset> = {
 export const sectorPresetsMiddleEast: Record<SectorId, SectorPreset> = {
   logistics: {
     id: 'logistics',
-    name: 'Delivery Rider & Warehouse',
-    nameBn: 'ডেলিভারি রাইডার ও ওয়্যারহাউস (সহজেই কাজ শিখে নেওয়ার মানসিকতা)',
+    name: 'Warehouse & Fulfillment Operative',
+    nameBn: 'ওয়্যারহাউস ও ফুলফিলমেন্ট কর্মী (সহজেই কাজ শিখে নেওয়ার মানসিকতা)',
     iconName: 'Truck',
-    targetJobTitle: 'Delivery Rider & Warehouse Associate (Quick Learner)',
+    targetJobTitle: 'Warehouse & Fulfillment Associate (Quick Learner)',
     summary:
-      'Energetic, tech-savvy, and safety-conscious Delivery Rider & Warehouse Operative from Bangladesh seeking Gulf Employment Visa sponsorship (UAE, Saudi Arabia, Qatar). Holds valid motorcycle and light vehicle driving credentials, paired with extensive smartphone GPS navigation fluency. Brings verified 98% accuracy in inventory data operations from Golden Harvest InfoTech and facility care from Perlov Medical Services. Highly trainable, physically resilient for outdoor climate, and ready for immediate deployment.',
+      'Energetic, tech-savvy, and safety-conscious Warehouse & Fulfillment Operative from Bangladesh seeking Gulf Employment Visa sponsorship (UAE, Saudi Arabia, Qatar). Brings verified 98% accuracy in inventory data operations from Golden Harvest InfoTech and facility care from Perlov Medical Services. Highly trainable, physically resilient for active warehouse shifts, and ready for immediate deployment.',
     skills: [
       {
-        category: 'Gulf Delivery & Warehouse Skills',
+        category: 'Gulf Warehouse & Fulfillment Skills',
         items: [
-          'GPS Route Navigation (Google Maps, Waze, Delivery Apps)',
-          'Safe Motorcycle & Light Vehicle Driving (Valid License Holder)',
+          'GPS Route & Logistics Navigation (Google Maps, Waze)',
+          'Order Picking, Packing & Parcel Stacking Protocols',
           'Quick Learner of Barcode Scanners & Cash On Delivery (COD) POS',
-          'Order Picking, Packing & Parcel Stacking Readiness',
+          'Warehouse Cargo Staging & Pallet Trolley Operation',
           'Courteous Customer Interaction & Clear English Communication',
         ],
       },
@@ -960,7 +960,7 @@ export const sectorPresetsMiddleEast: Record<SectorId, SectorPreset> = {
         category: 'Physical Stamina & Work Ethic',
         items: [
           'High physical stamina under warm Gulf climate conditions',
-          'Clean driving record & zero traffic violation mindset',
+          'Zero handling error and strict workplace safety mindset',
           'Ready for immediate relocation with complete GAMCA/Wafid medical readiness',
         ],
       },
@@ -978,12 +978,12 @@ export const sectorPresetsMiddleEast: Record<SectorId, SectorPreset> = {
       companyCity: 'Dubai',
       companyCountry: 'United Arab Emirates',
       date: '2026-11-03',
-      subject: 'Application for Delivery Rider / Warehouse Associate (Employment Visa Sponsorship)',
+      subject: 'Application for Warehouse & Fulfillment Associate (Employment Visa Sponsorship)',
       salutation: 'Dear Hiring Manager,',
       openingParagraph:
-        'I am pleased to formally submit my application for the position of Delivery Rider / Warehouse Associate with your esteemed company in the UAE. With strong personal energy, smartphone GPS navigation fluency, and a valid driving license, I am excited to join your delivery fleet.',
+        'I am pleased to formally submit my application for the position of Warehouse & Fulfillment Associate with your esteemed company in the UAE. With strong personal energy, smartphone GPS navigation fluency, and rapid learning agility, I am excited to join your logistics operations.',
       experienceParagraph:
-        'My professional background is in facility systems support at Perlov Medical Services Ltd and high-speed data verification at Golden Harvest InfoTech Ltd (where I achieved an audited 98% accuracy benchmark). I hold a valid motorcycle and light vehicle driving license. While I am new to the Gulf region, I am an active driver, master GPS routes rapidly, and learn delivery apps and barcode scanners without difficulty.',
+        'My professional background is in facility systems support at Perlov Medical Services Ltd and high-speed data verification at Golden Harvest InfoTech Ltd (where I achieved an audited 98% accuracy benchmark). While I am new to the Gulf region, I master warehouse systems rapidly, and learn fulfillment apps and barcode scanners without difficulty.',
       motivationParagraph:
         'I am 24 years old, physically fit, energetic, and capable of working active 10-12 hour shifts in Gulf weather conditions. I communicate clearly in English, have basic conversational Arabic greetings, and am committed to representing your brand with polite and safe service.',
       relocationParagraph:
@@ -1084,7 +1084,7 @@ export const sectorPresetsMiddleEast: Record<SectorId, SectorPreset> = {
         items: [
           'Fast fault isolation on hardware, printers, and network nodes',
           'Clear technical communication in English',
-          'Valid Driving License holder; ready to drive service vans in Gulf cities',
+          'Immediate readiness for on-site client branch visits and technical support',
         ],
       },
     ],
@@ -1108,7 +1108,7 @@ export const sectorPresetsMiddleEast: Record<SectorId, SectorPreset> = {
       experienceParagraph:
         'At Perlov Medical Services Ltd, I have been responsible for managing company-wide network connections, CCTV surveillance cameras, and biometric attendance terminals, while delivering prompt technical support to end-users. My background allows me to diagnose hardware and software issues rapidly, configure routers and switches, and maintain continuous equipment uptime.',
       motivationParagraph:
-        'I am enthusiastic about the rapid technological development across Saudi Arabia (Vision 2030) and the Gulf region. I communicate fluently in English, learn specialized enterprise software quickly, and hold a valid driving license which enables me to travel to client sites and service branches efficiently.',
+        'I am enthusiastic about the rapid technological development across Saudi Arabia (Vision 2030) and the Gulf region. I communicate fluently in English, learn specialized enterprise software quickly, and am ready to support branch operations and client sites with high dedication.',
       relocationParagraph:
         'I hold a valid Bangladeshi International Passport with over 4 years of remaining validity, a clean police clearance certificate, and am prepared for GAMCA medical testing. I am seeking employer sponsorship for an Employment Visa and am available for immediate deployment.',
       closingParagraph:
@@ -1307,11 +1307,7 @@ export const defaultCandidateProfile: CandidateProfile = {
   trainings: [...baseTrainings],
   skills: sectorPresetsEurope.it.skills,
   languages: [...baseLanguagesEurope],
-  drivingMobility: [
-    'Motorcycle & Light Vehicle Driver License (Valid BD License held)',
-    'Ready for European / GCC driving license conversion upon arrival',
-    'Experience driving in diverse urban and suburban traffic conditions',
-  ],
+  drivingMobility: [],
   additionalCertifications: [
     'Valid International Passport (Validity > 4 Years)',
     'Government Police Clearance Certificate (Clean Background)',

@@ -120,10 +120,12 @@ export const GulfExecutiveCV: React.FC<GulfExecutiveCVProps> = ({ profile }) => 
               <span className="text-slate-500 block text-[11px]">Visa Status:</span>
               <strong className="text-amber-700 font-semibold">Ready for Employment Visa</strong>
             </div>
-            <div>
-              <span className="text-slate-500 block text-[11px]">Driving License:</span>
-              <strong className="text-slate-900 font-semibold">{personalInfo.drivingLicense}</strong>
-            </div>
+            {personalInfo.drivingLicense && (
+              <div>
+                <span className="text-slate-500 block text-[11px]">Driving License:</span>
+                <strong className="text-slate-900 font-semibold">{personalInfo.drivingLicense}</strong>
+              </div>
+            )}
           </div>
         </div>
 

@@ -245,10 +245,11 @@ TECHNICAL & KEY SKILLS:
 ${profile.skills.map((s) => `${s.category}: ${s.items.join(', ')}`).join('\n')}
 
 LANGUAGES:
-${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Native' : 'Fluent')})`).join('; ')}
-
-DRIVING & MOBILITY:
-${profile.drivingMobility.join('; ')}`;
+${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Native' : 'Fluent')})`).join('; ')}${
+  profile.personalInfo.drivingLicense && profile.drivingMobility.length > 0
+    ? `\n\nDRIVING & MOBILITY:\n${profile.drivingMobility.join('; ')}`
+    : ''
+}`;
   };
 
   // Copy plain text of CV for online portal forms
@@ -678,6 +679,7 @@ ${profile.drivingMobility.join('; ')}`;
                   data={currentCoverLetter}
                   onUpdate={handleUpdateCoverLetter}
                   onPrint={handlePrint}
+                  region={region}
                 />
               )}
             </div>

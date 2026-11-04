@@ -129,16 +129,18 @@ export const ModernCV: React.FC<ModernCVProps> = ({ profile }) => {
           </div>
 
           {/* Driving Licence */}
-          <div className="space-y-2">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1">
-              Driving & Mobility
-            </h3>
-            <div className="space-y-1.5 text-xs text-slate-600">
-              {drivingMobility.map((drive, idx) => (
-                <p key={idx} className="leading-snug">• {drive}</p>
-              ))}
+          {Boolean(personalInfo.drivingLicense) && drivingMobility && drivingMobility.length > 0 && (
+            <div className="space-y-2">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1">
+                Driving & Mobility
+              </h3>
+              <div className="space-y-1.5 text-xs text-slate-600">
+                {drivingMobility.map((drive, idx) => (
+                  <p key={idx} className="leading-snug">• {drive}</p>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Skills Breakdown */}
           <div className="space-y-3">

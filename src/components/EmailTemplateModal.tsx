@@ -51,7 +51,7 @@ I hope this email finds you well.
 
 I am writing to formally submit my application for the position of ${profile.personalInfo.targetJobTitle} with your esteemed company in the Gulf region.
 
-I am a disciplined, physically fit, and hardworking 24-year-old candidate from Bangladesh. I hold a 4-year Diploma in Computer Engineering and bring solid hands-on experience in fast-paced operational roles, equipment care, reliable team collaboration, and high-accuracy data management (98% audited score). I communicate fluently in English, have basic conversational Arabic for friendly workplace greetings, and hold a valid driving license.
+I am a disciplined, physically fit, and hardworking 24-year-old candidate from Bangladesh. I hold a 4-year Diploma in Computer Engineering and bring solid hands-on experience in fast-paced operational roles, equipment care, reliable team collaboration, and high-accuracy data management (98% audited score). I communicate fluently in English and have basic conversational Arabic for friendly workplace greetings.
 
 I hold a valid International Passport (with over 4 years of remaining validity), a clean government police clearance certificate, and am fully prepared to undergo GAMCA / Wafid medical fitness examination immediately. I am seeking legal employer sponsorship for an Employment Visa and am available for immediate deployment upon visa issuance.
 

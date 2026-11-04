@@ -781,13 +781,26 @@ export const EditorDrawer: React.FC<EditorDrawerProps> = ({ profile, onChange, o
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-700 mb-1">Driving License</label>
+              <div className="flex justify-between items-center mb-1">
+                <label className="block font-semibold text-slate-700">ড্রাইভিং লাইসেন্স (ঐচ্ছিক / Optional)</label>
+                {profile.personalInfo.drivingLicense && (
+                  <button
+                    type="button"
+                    onClick={() => updatePersonal('drivingLicense', '')}
+                    className="text-[11px] text-rose-600 hover:underline"
+                  >
+                    মুছে ফেলুন (নাই)
+                  </button>
+                )}
+              </div>
               <input
                 type="text"
-                value={profile.personalInfo.drivingLicense}
+                value={profile.personalInfo.drivingLicense || ''}
                 onChange={(e) => updatePersonal('drivingLicense', e.target.value)}
-                className="w-full border border-slate-300 rounded-md p-2 focus:ring-1 focus:ring-blue-500"
+                placeholder="লাইসেন্স না থাকলে ফাঁকা রাখুন (সিভিতে দেখাবে না)"
+                className="w-full border border-slate-300 rounded-md p-2 focus:ring-1 focus:ring-blue-500 text-xs"
               />
+              <p className="text-[10px] text-slate-500 mt-1">ফাঁকা রাখলে সিভিতে ড্রাইভিং সংক্রান্ত কোনো সেকশন বা টেক্সট দেখাবে না।</p>
             </div>
 
             <div>

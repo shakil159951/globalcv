@@ -97,12 +97,12 @@ export const DocumentChecklistModal: React.FC<DocumentChecklistModalProps> = ({
     {
       id: 'doc-driving',
       category: 'primary',
-      title: 'BRTA Driving License (Motorcycle & Light Vehicle)',
-      titleBn: 'বিআরটিএ ড্রাইভিং লাইসেন্স (স্মার্ট কার্ড)',
-      description: 'Valid smart card driving license for motorcycle & light motor vehicles. Crucial for delivery courier & transport roles.',
-      isReady: true,
+      title: 'BRTA Driving License (Optional / Only for Driving Roles)',
+      titleBn: 'বিআরটিএ ড্রাইভিং লাইসেন্স (প্রযোজ্য ক্ষেত্রে / ঐচ্ছিক)',
+      description: 'শুধুমাত্র ড্রাইভার বা ডেলিভারি রাইডার পদের ক্ষেত্রে প্রয়োজন; সাধারণ আইটি, ফ্যাক্টরি, ফার্মিং বা অফিস জবের জন্য প্রয়োজন নেই।',
+      isReady: false,
       authority: 'Bangladesh Road Transport Authority (BRTA)',
-      requiredFor: 'Delivery, Logistics, Field Operations',
+      requiredFor: 'Optional (Delivery, Courier, Transport Roles Only)',
     },
     {
       id: 'doc-bmet',

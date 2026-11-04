@@ -133,7 +133,11 @@ export const CompactCV: React.FC<CompactCVProps> = ({ profile }) => {
           </h2>
           <div className="text-[11.5px] text-slate-700 space-y-0.5">
             <p><strong className="text-slate-900">Permit Status:</strong> Ready for National Visa D / Work Permit</p>
-            <p><strong className="text-slate-900">Driving:</strong> {drivingMobility[0]}</p>
+            {Boolean(personalInfo.drivingLicense) && drivingMobility?.[0] ? (
+              <p><strong className="text-slate-900">Driving:</strong> {drivingMobility[0]}</p>
+            ) : (
+              <p><strong className="text-slate-900">Deployment:</strong> Immediate joining & flexible shift readiness</p>
+            )}
           </div>
         </div>
       </div>

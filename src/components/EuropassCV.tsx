@@ -35,24 +35,24 @@ export const EuropassCV: React.FC<EuropassCVProps> = ({ profile }) => {
         </div>
       )}
 
-      <div className="p-8 space-y-6">
+      <div className="p-6 sm:p-8 print:p-0 space-y-4 sm:space-y-5 print:space-y-3.5">
         {/* Personal Details Header */}
-        <div className="flex flex-col md:flex-row items-start justify-between gap-6 pb-6 border-b border-slate-200">
-          <div className="flex-1 space-y-3">
+        <div className="flex flex-row items-start justify-between gap-4 sm:gap-6 pb-4 sm:pb-5 border-b border-slate-200 print:flex-row print:items-start">
+          <div className="flex-1 space-y-2.5">
             <div>
               {personalInfo.showEuropassBanner === false && (
                 <div className="text-[11px] font-bold text-[#0e417a] uppercase tracking-wider mb-1">
                   Europass Curriculum Vitae
                 </div>
               )}
-              <h1 className="text-2xl font-bold text-[#0e417a] tracking-tight">
+              <h1 className="text-xl sm:text-2xl font-bold text-[#0e417a] tracking-tight">
                 {personalInfo.firstName} {personalInfo.lastName}
               </h1>
-              <p className="text-base font-semibold text-slate-700 mt-0.5">
+              <p className="text-sm sm:text-base font-semibold text-slate-700 mt-0.5">
                 {personalInfo.targetJobTitle}
               </p>
               {personalInfo.showVisaStatus && (
-                <div className="inline-flex items-center gap-1.5 mt-2 bg-blue-50 border border-blue-200 text-blue-800 text-[11px] font-medium px-2.5 py-1 rounded">
+                <div className="inline-flex items-center gap-1.5 mt-1.5 bg-blue-50 border border-blue-200 text-blue-800 text-[11px] font-medium px-2.5 py-0.5 rounded">
                   <ShieldCheck className="w-3.5 h-3.5 text-blue-700 shrink-0" />
                   <span>{personalInfo.visaStatus}</span>
                 </div>
@@ -60,31 +60,31 @@ export const EuropassCV: React.FC<EuropassCVProps> = ({ profile }) => {
             </div>
 
             {/* Contact Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-slate-600 text-xs">
-              <div className="flex items-center gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 print:grid-cols-2 gap-x-4 gap-y-1 text-slate-600 text-xs">
+              <div className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#0e417a] shrink-0" />
                 <span>{personalInfo.address}, {personalInfo.city}-{personalInfo.postalCode}, {personalInfo.country}</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <Phone className="w-3.5 h-3.5 text-[#0e417a] shrink-0" />
                 <span className="tabular-nums font-medium text-slate-800">{personalInfo.phone}</span>
                 <span className="text-[10px] text-emerald-700 bg-emerald-50 px-1 py-0.2 rounded border border-emerald-200">WhatsApp</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <Mail className="w-3.5 h-3.5 text-[#0e417a] shrink-0" />
                 <span className="text-slate-800">{personalInfo.email}</span>
               </div>
               {personalInfo.website && (
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5">
                   <Globe className="w-3.5 h-3.5 text-[#0e417a] shrink-0" />
                   <span>{personalInfo.website}</span>
                 </div>
               )}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5 text-[#0e417a] shrink-0" />
                 <span>Date of birth: <strong className="text-slate-800 font-semibold">{personalInfo.dateOfBirth}</strong></span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <User className="w-3.5 h-3.5 text-[#0e417a] shrink-0" />
                 <span>Nationality: <strong className="text-slate-800 font-semibold">{personalInfo.nationality}</strong> · Gender: {personalInfo.gender}</span>
               </div>
@@ -93,11 +93,11 @@ export const EuropassCV: React.FC<EuropassCVProps> = ({ profile }) => {
 
           {/* Photo Box */}
           {personalInfo.showPhoto && personalInfo.photoUrl && (
-            <div className="shrink-0 self-center md:self-start">
+            <div className="shrink-0 self-start">
               <img
                 src={personalInfo.photoUrl}
                 alt={personalInfo.firstName}
-                className="w-28 h-36 object-cover rounded border-2 border-slate-300 shadow-sm"
+                className="w-24 h-32 sm:w-28 sm:h-36 print:w-24 print:h-32 object-cover rounded border-2 border-slate-300 shadow-sm"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -117,22 +117,22 @@ export const EuropassCV: React.FC<EuropassCVProps> = ({ profile }) => {
         </div>
 
         {/* Section: Work Experience */}
-        <div className="avoid-break space-y-4">
+        <div className="space-y-3.5">
           <div className="flex items-center gap-2 pb-1 border-b-2 border-[#0e417a]">
             <h2 className="text-sm font-bold uppercase tracking-wide text-[#0e417a]">
               Work Experience
             </h2>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3.5">
             {experiences.map((exp) => (
-              <div key={exp.id} className="avoid-break grid grid-cols-1 md:grid-cols-12 gap-2">
-                <div className="md:col-span-3 text-xs font-semibold text-slate-600">
-                  <span className="text-[#0e417a] font-bold">{exp.startDate} – {exp.endDate}</span>
+              <div key={exp.id} className="avoid-break grid grid-cols-12 gap-2.5 print:grid-cols-12">
+                <div className="col-span-3 text-xs font-semibold text-slate-600">
+                  <span className="text-[#0e417a] font-bold block">{exp.startDate} – {exp.endDate}</span>
                   <p className="text-[11px] font-normal text-slate-500 mt-0.5">{exp.location}</p>
                 </div>
 
-                <div className="md:col-span-9 space-y-1.5">
+                <div className="col-span-9 space-y-1">
                   <div>
                     <h3 className="font-bold text-slate-900 text-[13px]">{exp.role}</h3>
                     <p className="text-xs font-medium text-slate-600">{exp.company}</p>
@@ -152,38 +152,38 @@ export const EuropassCV: React.FC<EuropassCVProps> = ({ profile }) => {
         </div>
 
         {/* Section: Education and Training */}
-        <div className="avoid-break space-y-4">
+        <div className="space-y-3.5">
           <div className="flex items-center gap-2 pb-1 border-b-2 border-[#0e417a]">
             <h2 className="text-sm font-bold uppercase tracking-wide text-[#0e417a]">
               Education and Training
             </h2>
           </div>
 
-          <div className="space-y-3.5">
+          <div className="space-y-3">
             {education.map((edu) => (
-              <div key={edu.id} className="avoid-break grid grid-cols-1 md:grid-cols-12 gap-2">
-                <div className="md:col-span-3 text-xs font-semibold text-slate-600">
-                  <span className="text-[#0e417a] font-bold">{edu.year}</span>
+              <div key={edu.id} className="avoid-break grid grid-cols-12 gap-2.5 print:grid-cols-12">
+                <div className="col-span-3 text-xs font-semibold text-slate-600">
+                  <span className="text-[#0e417a] font-bold block">{edu.year}</span>
                   <p className="text-[11px] font-normal text-slate-500 mt-0.5">{edu.location}</p>
                 </div>
 
-                <div className="md:col-span-9 space-y-0.5">
+                <div className="col-span-9 space-y-0.5">
                   <h3 className="font-bold text-slate-900 text-[13px]">{edu.degree}</h3>
                   <p className="text-xs text-slate-700 font-medium">{edu.institution} · <span className="text-[#0e417a] font-semibold">{edu.grade}</span></p>
                   {edu.details && (
-                    <p className="text-xs text-slate-600 mt-1 leading-snug">{edu.details}</p>
+                    <p className="text-xs text-slate-600 mt-0.5 leading-snug">{edu.details}</p>
                   )}
                 </div>
               </div>
             ))}
 
             {trainings.map((trn) => (
-              <div key={trn.id} className="avoid-break grid grid-cols-1 md:grid-cols-12 gap-2">
-                <div className="md:col-span-3 text-xs font-semibold text-slate-600">
-                  <span className="text-[#0e417a] font-bold">{trn.year}</span>
+              <div key={trn.id} className="avoid-break grid grid-cols-12 gap-2.5 print:grid-cols-12">
+                <div className="col-span-3 text-xs font-semibold text-slate-600">
+                  <span className="text-[#0e417a] font-bold block">{trn.year}</span>
                   <p className="text-[11px] font-normal text-slate-500 mt-0.5">Professional Course</p>
                 </div>
-                <div className="md:col-span-9 space-y-0.5">
+                <div className="col-span-9 space-y-0.5">
                   <h3 className="font-bold text-slate-900 text-[13px]">{trn.title}</h3>
                   <p className="text-xs text-slate-700">{trn.institution}</p>
                   {trn.description && (
@@ -253,16 +253,16 @@ export const EuropassCV: React.FC<EuropassCVProps> = ({ profile }) => {
         </div>
 
         {/* Section: Job-related, Technical & Practical Skills */}
-        <div className="avoid-break space-y-3">
+        <div className="avoid-break space-y-2.5">
           <div className="flex items-center gap-2 pb-1 border-b-2 border-[#0e417a]">
             <h2 className="text-sm font-bold uppercase tracking-wide text-[#0e417a]">
               Job-Related, Operational & Digital Skills
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 print:grid-cols-2 gap-2.5 text-xs">
             {skills.map((skillGroup, idx) => (
-              <div key={idx} className="bg-slate-50 p-3 rounded border border-slate-200 space-y-1.5">
+              <div key={idx} className="bg-slate-50 p-2.5 rounded border border-slate-200 space-y-1">
                 <h4 className="font-bold text-[#0e417a] text-xs uppercase tracking-wider">{skillGroup.category}</h4>
                 <ul className="space-y-1 text-slate-700">
                   {skillGroup.items.map((item, itemIdx) => (
@@ -277,46 +277,52 @@ export const EuropassCV: React.FC<EuropassCVProps> = ({ profile }) => {
           </div>
         </div>
 
-        {/* Section: Driving Licence & Additional Information */}
-        <div className="avoid-break space-y-3 pt-2">
-          <div className="flex items-center gap-2 pb-1 border-b-2 border-[#0e417a]">
-            <h2 className="text-sm font-bold uppercase tracking-wide text-[#0e417a]">
-              Additional Information & Legal Readiness
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <div className="space-y-1.5 bg-slate-50 p-3 rounded border border-slate-200">
-              <div className="flex items-center gap-1.5 font-bold text-slate-900">
-                <Car className="w-3.5 h-3.5 text-[#0e417a]" />
-                <span>Driving Licence & Mobility</span>
-              </div>
-              <ul className="space-y-1 text-slate-700">
-                {drivingMobility.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-1.5">
-                    <span className="text-slate-400">•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+        {/* Section: Driving Licence & Additional Information (Conditional) */}
+        {((Boolean(personalInfo.drivingLicense) && drivingMobility && drivingMobility.length > 0) || (additionalCertifications && additionalCertifications.length > 0)) && (
+          <div className="avoid-break space-y-2.5 pt-1">
+            <div className="flex items-center gap-2 pb-1 border-b-2 border-[#0e417a]">
+              <h2 className="text-sm font-bold uppercase tracking-wide text-[#0e417a]">
+                Legal Status & Relocation Preparedness
+              </h2>
             </div>
 
-            <div className="space-y-1.5 bg-slate-50 p-3 rounded border border-slate-200">
-              <div className="flex items-center gap-1.5 font-bold text-slate-900">
-                <FileCheck className="w-3.5 h-3.5 text-[#0e417a]" />
-                <span>Visa & Travel Readiness</span>
-              </div>
-              <ul className="space-y-1 text-slate-700">
-                {additionalCertifications.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-1.5">
-                    <span className="text-emerald-600 font-bold">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className={Boolean(personalInfo.drivingLicense) && drivingMobility && drivingMobility.length > 0 ? "grid grid-cols-1 sm:grid-cols-2 print:grid-cols-2 gap-3 text-xs" : "grid grid-cols-1 gap-3 text-xs"}>
+              {Boolean(personalInfo.drivingLicense) && drivingMobility && drivingMobility.length > 0 && (
+                <div className="space-y-1.5 bg-slate-50 p-2.5 rounded border border-slate-200">
+                  <div className="flex items-center gap-1.5 font-bold text-slate-900">
+                    <Car className="w-3.5 h-3.5 text-[#0e417a]" />
+                    <span>Driving Licence & Mobility</span>
+                  </div>
+                  <ul className="space-y-1 text-slate-700">
+                    {drivingMobility.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {additionalCertifications && additionalCertifications.length > 0 && (
+                <div className="space-y-1.5 bg-slate-50 p-2.5 rounded border border-slate-200">
+                  <div className="flex items-center gap-1.5 font-bold text-slate-900">
+                    <FileCheck className="w-3.5 h-3.5 text-[#0e417a]" />
+                    <span>Visa & Relocation Readiness</span>
+                  </div>
+                  <ul className="space-y-1 text-slate-700">
+                    {additionalCertifications.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-1.5">
+                        <span className="text-emerald-600 font-bold">✓</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
-        </div>
+        )}
 
         {/* Optional Europass Declaration (Off by default as standard European Europass CVs do not use declarations) */}
         {personalInfo.showDeclaration && (

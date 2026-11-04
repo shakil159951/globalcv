@@ -53,7 +53,7 @@ export const ScorecardModal: React.FC<ScorecardModalProps> = ({
       category: 'আন্তর্জাতিক ফরম্যাট',
       nameBn: 'ইউরোপিয়ান কমিশন স্বীকৃত Europass ফরম্যাট (Official Europass Standard)',
       nameEn: 'Official European Commission Europass CV',
-      descriptionBn: 'অফিশিয়াল ব্লু হেডার, CEFR ল্যাঙ্গুয়েজ ফ্রেমওয়ার্ক, ড্রাইভিং ও মোবিলিটি এবং ইউরোপিয়ান ওয়ার্ক পারমিট স্পনসরশিপ প্রস্তুতি অন্তর্ভুক্ত।',
+      descriptionBn: 'অফিশিয়াল ব্লু হেডার, CEFR ল্যাঙ্গুয়েজ ফ্রেমওয়ার্ক, লিগ্যাল ও ট্রাভেল প্রস্তুতি এবং ইউরোপিয়ান ওয়ার্ক পারমিট স্পনসরশিপ প্রস্তুতি অন্তর্ভুক্ত।',
       score: '1 / 1',
     },
     {

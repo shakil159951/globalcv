@@ -6,9 +6,10 @@ interface CoverLetterViewProps {
   data: CoverLetterData;
   onUpdate: (updated: Partial<CoverLetterData>) => void;
   onPrint: () => void;
+  region?: 'bangladesh' | 'europe' | 'middle_east';
 }
 
-export const CoverLetterView: React.FC<CoverLetterViewProps> = ({ data, onUpdate, onPrint }) => {
+export const CoverLetterView: React.FC<CoverLetterViewProps> = ({ data, onUpdate, onPrint, region = 'europe' }) => {
   const [copied, setCopied] = React.useState(false);
   const [isEditing, setIsEditing] = React.useState(false);
 
@@ -214,7 +215,11 @@ ${data.senderName}`;
 
           <div className="text-right text-xs text-slate-500">
             <span className="inline-block bg-slate-100 px-2 py-0.5 rounded text-[11px] font-semibold text-slate-700">
-              European Work Permit Candidate
+              {region === 'bangladesh'
+                ? 'Corporate Job Applicant'
+                : region === 'middle_east'
+                ? 'Gulf Employment Visa Candidate'
+                : 'European Work Permit Candidate'}
             </span>
             <p className="mt-1 font-medium text-slate-700 tabular-nums">Date: {data.date}</p>
           </div>
@@ -253,7 +258,13 @@ ${data.senderName}`;
           <p className="font-semibold text-slate-800">{data.signoff}</p>
           <div>
             <p className="font-bold text-[#0e417a] text-sm">{data.senderName}</p>
-            <p className="text-xs text-slate-500 mt-0.5">Applicant from Bangladesh · Curriculum Vitae Enclosed</p>
+            <p className="text-xs text-slate-500 mt-0.5">
+              {region === 'bangladesh'
+                ? 'Applicant · Curriculum Vitae Enclosed'
+                : region === 'middle_east'
+                ? 'Applicant from Bangladesh · Ready for GAMCA & Deployment'
+                : 'Applicant from Bangladesh · Europass CV Enclosed'}
+            </p>
           </div>
         </div>
       </div>

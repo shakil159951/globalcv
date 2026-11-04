@@ -188,7 +188,9 @@ export const BDCorporateCV: React.FC<BDCorporateCVProps> = ({ profile }) => {
           <div><span className="font-semibold text-slate-600">Religion:</span> {personalInfo.religion || 'Islam'}</div>
           <div><span className="font-semibold text-slate-600">Nationality:</span> {personalInfo.nationality}</div>
           <div className="sm:col-span-2"><span className="font-semibold text-slate-600">Permanent Address:</span> {personalInfo.permanentAddress || 'Mithapur, Badalgachhi, Naogaon, Bangladesh'}</div>
-          <div className="sm:col-span-2"><span className="font-semibold text-slate-600">Driving License:</span> {personalInfo.drivingLicense}</div>
+          {personalInfo.drivingLicense && (
+            <div className="sm:col-span-2"><span className="font-semibold text-slate-600">Driving License:</span> {personalInfo.drivingLicense}</div>
+          )}
         </div>
       </div>
 
