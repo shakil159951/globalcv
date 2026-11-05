@@ -10,7 +10,7 @@ export const CompactCV: React.FC<CompactCVProps> = ({ profile }) => {
   const { personalInfo, summary, experiences, education, skills, languages, drivingMobility, additionalCertifications } = profile;
 
   return (
-    <div className="bg-white text-slate-800 shadow-xl rounded-none w-full max-w-[800px] mx-auto p-8 border border-slate-200 print-sheet font-sans text-[12px] leading-normal space-y-4">
+    <div className="bg-white text-slate-800 a4-paper-sheet mx-auto p-8 sm:p-12 print:p-0 border border-slate-300/80 print:border-none print-sheet font-sans text-[12px] leading-normal space-y-4 print:space-y-3">
       {/* Header */}
       <div className="text-center space-y-1.5 border-b-2 border-slate-800 pb-3">
         <h1 className="text-2xl font-black uppercase tracking-wider text-slate-900">

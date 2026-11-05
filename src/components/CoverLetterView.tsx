@@ -194,27 +194,27 @@ ${data.senderName}`;
         </div>
       )}
 
-      {/* European Standard Letter Sheet */}
-      <div className="bg-white text-slate-800 shadow-xl rounded-none w-full max-w-[800px] mx-auto p-10 border border-slate-200 print-sheet font-sans text-[13px] leading-relaxed space-y-6">
+      {/* European & International Standard Letter Sheet */}
+      <div className="bg-white text-slate-800 a4-paper-sheet mx-auto p-8 sm:p-14 print:p-0 border border-slate-300/80 print:border-none print-sheet font-sans text-[13px] leading-relaxed space-y-6 print:space-y-4">
         {/* Top Header Row: Sender Details */}
         <div className="flex flex-col sm:flex-row justify-between items-start gap-4 pb-6 border-b border-slate-200">
           <div>
-            <h1 className="text-xl font-bold text-[#0e417a]">{data.senderName}</h1>
+            <h1 className="text-xl font-bold text-[#0e417a] print:text-slate-900">{data.senderName}</h1>
             <p className="text-xs text-slate-600 mt-0.5">{data.senderAddress}</p>
             <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600 mt-1.5">
               <span className="flex items-center gap-1">
-                <Phone className="w-3 h-3 text-[#0e417a]" />
+                <Phone className="w-3 h-3 text-[#0e417a] print:text-slate-700" />
                 {data.senderPhone}
               </span>
               <span className="flex items-center gap-1">
-                <Mail className="w-3 h-3 text-[#0e417a]" />
+                <Mail className="w-3 h-3 text-[#0e417a] print:text-slate-700" />
                 {data.senderEmail}
               </span>
             </div>
           </div>
 
           <div className="text-right text-xs text-slate-500">
-            <span className="inline-block bg-slate-100 px-2 py-0.5 rounded text-[11px] font-semibold text-slate-700">
+            <span className="inline-block bg-slate-100 print:bg-transparent print:border print:border-slate-300 print:text-slate-700 px-2 py-0.5 rounded text-[11px] font-semibold text-slate-700">
               {region === 'bangladesh'
                 ? 'Corporate Job Applicant'
                 : region === 'middle_east'
@@ -229,14 +229,14 @@ ${data.senderName}`;
         <div className="space-y-0.5 text-xs text-slate-700">
           <p className="font-bold text-slate-900 text-[13px]">{data.recipientName}</p>
           <p>{data.recipientTitle}</p>
-          <p className="font-semibold text-[#0e417a]">{data.companyName}</p>
+          <p className="font-semibold text-[#0e417a] print:text-slate-900">{data.companyName}</p>
           <p>{data.companyAddress}</p>
           <p className="font-medium text-slate-900">{data.companyCity}, {data.companyCountry}</p>
         </div>
 
         {/* Subject */}
         <div className="pt-2">
-          <h2 className="font-bold text-slate-900 text-sm border-l-3 border-[#0e417a] pl-3 py-0.5">
+          <h2 className="font-bold text-slate-900 text-sm border-l-3 border-[#0e417a] print:border-l-2 print:border-slate-900 pl-3 py-0.5">
             Subject: {data.subject}
           </h2>
         </div>
@@ -254,10 +254,15 @@ ${data.senderName}`;
         </div>
 
         {/* Signoff */}
-        <div className="pt-4 space-y-4">
+        <div className="pt-4 space-y-3 avoid-break">
           <p className="font-semibold text-slate-800">{data.signoff}</p>
-          <div>
-            <p className="font-bold text-[#0e417a] text-sm">{data.senderName}</p>
+          <div className="space-y-0.5 pt-2">
+            <div className="h-10 flex items-center">
+              <span className="font-serif italic text-lg text-slate-800 opacity-80 tracking-wide select-none">
+                {data.senderName}
+              </span>
+            </div>
+            <p className="font-bold text-[#0e417a] print:text-slate-900 text-sm">{data.senderName}</p>
             <p className="text-xs text-slate-500 mt-0.5">
               {region === 'bangladesh'
                 ? 'Applicant · Curriculum Vitae Enclosed'

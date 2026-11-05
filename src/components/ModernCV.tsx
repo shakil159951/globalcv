@@ -10,42 +10,42 @@ export const ModernCV: React.FC<ModernCVProps> = ({ profile }) => {
   const { personalInfo, summary, experiences, education, trainings, skills, languages, drivingMobility, additionalCertifications } = profile;
 
   return (
-    <div className="bg-white text-slate-800 shadow-xl rounded-none w-full max-w-[800px] mx-auto border border-slate-200 print-sheet font-sans text-[12.5px] leading-relaxed">
+    <div className="bg-white text-slate-800 a4-paper-sheet mx-auto border border-slate-300/80 print:border-none print-sheet font-sans text-[12.5px] leading-relaxed">
       {/* Top Header Banner */}
-      <div className="bg-slate-900 text-white p-8">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="bg-slate-900 print:bg-white text-white print:text-slate-900 p-8 print:p-0 print:pb-4 border-b-2 print:border-slate-800">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 print:flex-row print:items-start">
           <div className="space-y-1.5 flex-1">
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-semibold tracking-widest uppercase text-blue-400">
+              <span className="text-[11px] font-semibold tracking-widest uppercase text-blue-400 print:text-blue-800">
                 {profile.region === 'middle_east' ? 'Gulf Standard Professional Resume' : 'European Standard Resume'}
               </span>
               <span className="text-slate-500">|</span>
-              <span className="text-[11px] text-emerald-400 font-medium">Work Permit / Employment Visa Ready</span>
+              <span className="text-[11px] text-emerald-400 print:text-emerald-700 font-medium">Work Permit / Employment Visa Ready</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white print:text-slate-900">
               {personalInfo.firstName} {personalInfo.lastName}
             </h1>
-            <p className="text-sm sm:text-base font-medium text-slate-300">
+            <p className="text-sm sm:text-base font-medium text-slate-300 print:text-slate-700">
               {personalInfo.targetJobTitle}
             </p>
 
-            <div className="pt-2 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-slate-300">
+            <div className="pt-2 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-slate-300 print:text-slate-700">
               <span className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-blue-400 print:text-blue-700 shrink-0" />
                 {personalInfo.city}, {personalInfo.country}
               </span>
               <span className="flex items-center gap-1.5">
-                <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <span className="tabular-nums font-semibold">{personalInfo.phone}</span>
-                <span className="text-[10px] text-emerald-400 bg-emerald-950/80 px-1 rounded border border-emerald-500/30">WhatsApp</span>
+                <Phone className="w-3.5 h-3.5 text-blue-400 print:text-blue-700 shrink-0" />
+                <span className="tabular-nums font-semibold print:text-slate-900">{personalInfo.phone}</span>
+                <span className="text-[10px] text-emerald-400 print:text-emerald-700 bg-emerald-950/80 print:bg-transparent px-1 rounded border border-emerald-500/30 print:border-emerald-600">WhatsApp</span>
               </span>
               <span className="flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <Mail className="w-3.5 h-3.5 text-blue-400 print:text-blue-700 shrink-0" />
                 {personalInfo.email}
               </span>
               {personalInfo.website && (
                 <span className="flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                  <Globe className="w-3.5 h-3.5 text-blue-400 print:text-blue-700 shrink-0" />
                   {personalInfo.website}
                 </span>
               )}
@@ -57,7 +57,7 @@ export const ModernCV: React.FC<ModernCVProps> = ({ profile }) => {
               <img
                 src={personalInfo.photoUrl}
                 alt={personalInfo.firstName}
-                className="w-24 h-32 object-cover rounded border border-slate-700 shadow"
+                className="w-24 h-32 object-cover rounded border border-slate-700 print:border-slate-400 shadow"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -66,9 +66,9 @@ export const ModernCV: React.FC<ModernCVProps> = ({ profile }) => {
       </div>
 
       {/* Two Column Layout Body */}
-      <div className="grid grid-cols-1 md:grid-cols-12 min-h-[800px]">
+      <div className="grid grid-cols-1 md:grid-cols-12 print:grid-cols-12 min-h-[800px] print:min-h-0">
         {/* Left Sidebar (4 cols) */}
-        <div className="md:col-span-4 bg-slate-50/80 p-6 border-r border-slate-200 space-y-6">
+        <div className="md:col-span-4 col-span-4 bg-slate-50/80 print:bg-white p-6 print:p-2 border-r border-slate-200 space-y-6 print:space-y-4">
           {/* Key Facts */}
           <div className="space-y-2">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1">

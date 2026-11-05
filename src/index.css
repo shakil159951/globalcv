@@ -6,15 +6,46 @@
   }
 }
 
+/* Realistic physical A4 paper sheet for desktop / tablet review */
+.a4-paper-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  max-width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
 @media print {
   @page {
     size: A4 portrait;
     margin: 10mm 12mm 12mm 12mm;
   }
 
-  body {
+  /* Force pure white background everywhere across the entire DOM tree */
+  html,
+  body,
+  #root,
+  #root > div,
+  main,
+  section,
+  article,
+  .print-sheet,
+  .a4-paper-sheet {
+    background: #ffffff !important;
     background-color: #ffffff !important;
     color: #0f172a !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  body {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
@@ -27,13 +58,29 @@
     display: block !important;
   }
 
-  .print-sheet {
-    box-shadow: none !important;
-    border: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    max-width: 100% !important;
-    width: 100% !important;
+  /* Eliminate all grey and tinted container backgrounds so it prints pure clean white like real paper */
+  .print-sheet .bg-slate-50,
+  .print-sheet .bg-slate-100,
+  .print-sheet .bg-slate-200,
+  .print-sheet .bg-blue-50,
+  .print-sheet .bg-emerald-50,
+  .print-sheet .bg-indigo-50,
+  .print-sheet .bg-amber-50 {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+  }
+
+  /* Make container borders subtle and crisp for physical paper */
+  .print-sheet .border-slate-200,
+  .print-sheet .border-slate-100 {
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Keep table borders sharp */
+  .print-sheet table,
+  .print-sheet th,
+  .print-sheet td {
+    border-color: #cbd5e1 !important;
   }
 
   .avoid-break {

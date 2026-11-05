@@ -10,10 +10,10 @@ export const EuropassCV: React.FC<EuropassCVProps> = ({ profile }) => {
   const { personalInfo, summary, experiences, education, trainings, skills, languages, drivingMobility, additionalCertifications } = profile;
 
   return (
-    <div className="bg-white text-slate-800 shadow-xl rounded-none w-full max-w-[800px] mx-auto border border-slate-200 print-sheet font-sans text-[13px] leading-relaxed">
+    <div className="bg-white text-slate-800 a4-paper-sheet mx-auto border border-slate-300/80 print:border-none print-sheet font-sans text-[13px] leading-relaxed">
       {/* Official Europass Top Header Strip (Can be toggled in Editor Drawer) */}
       {personalInfo.showEuropassBanner !== false && (
-        <div className="bg-[#0e417a] text-white px-8 py-4 flex items-center justify-between">
+        <div className="bg-[#0e417a] text-white px-8 py-3.5 print:px-0 print:py-2 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
               <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-300 fill-current">

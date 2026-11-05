@@ -10,7 +10,7 @@ export const BDCorporateCV: React.FC<BDCorporateCVProps> = ({ profile }) => {
   const { personalInfo, summary, experiences, education, trainings, skills, languages, drivingMobility } = profile;
 
   return (
-    <div className="bg-white text-slate-900 shadow-xl rounded-none w-full max-w-[800px] mx-auto p-8 sm:p-10 border border-slate-200 print-sheet font-sans text-[12.5px] leading-relaxed space-y-5">
+    <div className="bg-white text-slate-900 a4-paper-sheet mx-auto p-8 sm:p-12 print:p-0 border border-slate-300/80 print:border-none print-sheet font-sans text-[12.5px] leading-relaxed space-y-4 print:space-y-3.5">
       {/* Top Header Block */}
       <div className="flex flex-col sm:flex-row justify-between items-start gap-4 pb-5 border-b-2 border-slate-900">
         <div className="space-y-1.5 flex-1">

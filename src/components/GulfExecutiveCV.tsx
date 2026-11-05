@@ -10,44 +10,44 @@ export const GulfExecutiveCV: React.FC<GulfExecutiveCVProps> = ({ profile }) => 
   const { personalInfo, summary, experiences, education, trainings, skills, languages, drivingMobility, additionalCertifications } = profile;
 
   return (
-    <div className="bg-white text-slate-800 shadow-xl rounded-none w-full max-w-[800px] mx-auto border border-slate-200 print-sheet font-sans text-[12.5px] leading-relaxed">
+    <div className="bg-white text-slate-800 a4-paper-sheet mx-auto border border-slate-300/80 print:border-none print-sheet font-sans text-[12.5px] leading-relaxed">
       {/* Top Header - Executive Gulf Navy & Gold */}
-      <div className="bg-[#0f172a] text-white p-7 border-b-4 border-amber-500">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="bg-[#0f172a] print:bg-white text-white print:text-slate-900 p-7 print:p-0 print:pb-4 border-b-4 border-amber-500 print:border-b-2 print:border-slate-800">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 print:flex-row print:items-start">
           <div className="space-y-1.5 flex-1">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold tracking-widest uppercase text-amber-400 bg-amber-950/60 border border-amber-500/30 px-2 py-0.5 rounded">
+              <span className="text-[10px] font-bold tracking-widest uppercase text-amber-400 print:text-amber-700 bg-amber-950/60 print:bg-transparent border border-amber-500/30 print:border-amber-600 px-2 py-0.5 rounded">
                 Gulf Standard Curriculum Vitae
               </span>
               <span className="text-slate-500">•</span>
-              <span className="text-[11px] text-emerald-400 font-medium">Employment Visa Candidate</span>
+              <span className="text-[11px] text-emerald-400 print:text-emerald-700 font-medium">Employment Visa Candidate</span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase">
+            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white print:text-slate-900 uppercase">
               {personalInfo.firstName} {personalInfo.lastName}
             </h1>
 
-            <p className="text-sm sm:text-base font-semibold text-amber-300">
+            <p className="text-sm sm:text-base font-semibold text-amber-300 print:text-amber-800">
               {personalInfo.targetJobTitle}
             </p>
 
-            <div className="pt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-300">
+            <div className="pt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-300 print:text-slate-700">
               <span className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-amber-400 print:text-amber-700 shrink-0" />
                 {personalInfo.city}, {personalInfo.country}
               </span>
               <span className="flex items-center gap-1.5">
-                <Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                <span className="font-semibold text-white tabular-nums">{personalInfo.phone}</span>
-                <span className="text-[10px] text-emerald-400 bg-emerald-950/80 px-1 rounded border border-emerald-500/30">WhatsApp</span>
+                <Phone className="w-3.5 h-3.5 text-amber-400 print:text-amber-700 shrink-0" />
+                <span className="font-semibold text-white print:text-slate-900 tabular-nums">{personalInfo.phone}</span>
+                <span className="text-[10px] text-emerald-400 print:text-emerald-700 bg-emerald-950/80 print:bg-transparent px-1 rounded border border-emerald-500/30 print:border-emerald-600">WhatsApp</span>
               </span>
               <span className="flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <Mail className="w-3.5 h-3.5 text-amber-400 print:text-amber-700 shrink-0" />
                 {personalInfo.email}
               </span>
               {personalInfo.website && (
                 <span className="flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <Globe className="w-3.5 h-3.5 text-amber-400 print:text-amber-700 shrink-0" />
                   {personalInfo.website}
                 </span>
               )}
@@ -60,7 +60,7 @@ export const GulfExecutiveCV: React.FC<GulfExecutiveCVProps> = ({ profile }) => 
               <img
                 src={personalInfo.photoUrl}
                 alt={personalInfo.firstName}
-                className="w-24 h-32 object-cover rounded-md border-2 border-amber-400/80 shadow-md"
+                className="w-24 h-32 object-cover rounded-md border-2 border-amber-400/80 print:border-slate-400 shadow-md print:shadow-none"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -69,7 +69,7 @@ export const GulfExecutiveCV: React.FC<GulfExecutiveCVProps> = ({ profile }) => 
       </div>
 
       {/* Main Body */}
-      <div className="p-7 space-y-5">
+      <div className="p-7 print:p-0 space-y-4 print:space-y-3.5 print:pt-4">
         {/* Profile Objective */}
         <div className="avoid-break space-y-1.5">
           <div className="flex items-center gap-2 pb-1 border-b-2 border-amber-600">

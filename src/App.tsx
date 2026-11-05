@@ -293,7 +293,7 @@ ${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Nativ
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-slate-100 print:bg-white print:min-h-0 print:block flex flex-col font-sans selection:bg-blue-600 selection:text-white">
       {/* Top Bar Header */}
       <Header
         onPrint={handlePrint}
@@ -627,8 +627,8 @@ ${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Nativ
       </section>
 
       {/* Main Document Workspace */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6">
-        <div className="flex flex-col lg:flex-row items-start gap-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 print:p-0 print:m-0 print:max-w-full print:w-full">
+        <div className="flex flex-col lg:flex-row items-start gap-6 print:block">
           {/* Left Column: Live Customizer Drawer */}
           {showEditor && (
             <div className="no-print w-full lg:w-96 shrink-0 lg:sticky lg:top-20">
@@ -641,7 +641,7 @@ ${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Nativ
           )}
 
           {/* Right Column: Live Document Sheet */}
-          <div className="flex-1 w-full space-y-4">
+          <div className="flex-1 w-full space-y-4 print:space-y-0 print:w-full print:p-0">
             {/* Header info badge before document */}
             <div className="no-print flex items-center justify-between text-xs text-slate-600 bg-white p-3 rounded-lg border border-slate-200 shadow-2xs">
               <span className="flex items-center gap-1.5 font-semibold">
@@ -665,7 +665,7 @@ ${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Nativ
             </div>
 
             {/* Document Render Area */}
-            <div className="w-full flex justify-center overflow-x-auto pb-12">
+            <div className="w-full flex justify-center overflow-x-auto pb-12 print:pb-0 print:overflow-visible print:block">
               {activeDoc === 'cv' ? (
                 <>
                   {activeTemplate === 'bd_corporate' && <BDCorporateCV profile={profile} />}
