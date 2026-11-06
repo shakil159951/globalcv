@@ -115,6 +115,16 @@ export const DocumentChecklistModal: React.FC<DocumentChecklistModalProps> = ({
       requiredFor: 'Final Airport Clearance from Hazrat Shahjalal Int. Airport',
     },
     {
+      id: 'doc-boesl-reg',
+      category: 'departure',
+      title: 'BOESL Online Candidate Registration Slip',
+      titleBn: 'বোয়েসেল অনলাইন প্রার্থী নিবন্ধন স্লিপ (employee.oep.gov.bd)',
+      description: 'অনলাইন রেজিস্ট্রেশন কপি (বিজ্ঞপ্তি নং: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪)। ইন্টারভিউয়ের দিন সাথে আনতে হবে।',
+      isReady: true,
+      authority: 'BOESL (employee.oep.gov.bd)',
+      requiredFor: 'DHL Supply Chain Malaysia BOESL Interview',
+    },
+    {
       id: 'doc-vax',
       category: 'medical',
       title: 'WHO Approved Vaccine Certificate (Suraksha)',

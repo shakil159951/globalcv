@@ -54,6 +54,8 @@ export const basePersonalInfo = {
   maritalStatus: 'Unmarried',
   religion: 'Islam',
   bloodGroup: 'B+ (Ve)',
+  signatureUrl: '',
+  showSignature: true,
 };
 
 // Shakil's authentic, verified academic credentials
@@ -194,6 +196,421 @@ export const baseLanguagesMiddleEast: LanguageItem[] = [
     comment: 'Mother tongue.',
   },
 ];
+
+export const baseLanguagesMalaysia: LanguageItem[] = [
+  {
+    id: 'lang-1',
+    name: 'English',
+    isNative: false,
+    levelText: 'Working Professional Proficiency (B2)',
+    comment: 'Fluent in reading technical SOPs, safety guidelines, shipment documents, and warehouse management system logs.',
+  },
+  {
+    id: 'lang-2',
+    name: 'Malay (Bahasa Melayu)',
+    isNative: false,
+    levelText: 'Basic Workplace & Operational Terms (A1)',
+    comment: 'Familiar with common Malaysian logistics & workplace phrases, numbers, safety notices, and warehouse directions; quick learner.',
+  },
+  {
+    id: 'lang-3',
+    name: 'Bengali',
+    isNative: true,
+    levelText: 'Native / Mother Tongue (C2)',
+    comment: 'Mother tongue.',
+  },
+];
+
+// =========================================================================
+// 0. MALAYSIA PRESETS (BOESL G2G Circular - DHL Supply Chain Malaysia)
+// Circular No: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪
+// =========================================================================
+export const sectorPresetsMalaysia: Record<SectorId, SectorPreset> = {
+  it: {
+    id: 'it',
+    name: 'Technical Skill Worker (IT & Warehouse Systems)',
+    nameBn: 'টেকনিক্যাল স্কিল ওয়ার্কার্স (DHL মালয়েশিয়া - BOESL)',
+    iconName: 'Cpu',
+    targetJobTitle: 'Technical Skill Worker (IT & Warehouse Systems) - DHL Supply Chain Malaysia',
+    summary:
+      'Results-oriented, disciplined Technical Skill Worker with a 4-year Diploma in Computer Engineering (CSE, CGPA: 3.78) from Naogaon Polytechnic Institute and over 2 years of proven industry experience at Perlov Medical Services Ltd and Golden Harvest InfoTech Ltd. Specifically prepared for DHL Supply Chain (Malaysia) Sdn. Bhd. under BOESL Circular No: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪. Highly proficient in computer hardware maintenance, LAN/WAN structured network cabling, switch and server rack installation, IP CCTV surveillance, biometric time-attendance terminals, and advanced Microsoft Excel data logs. Fluent in English technical SOPs, committed to DHL 5S safety discipline, zero system downtime, and immediate overseas deployment.',
+    skills: [
+      {
+        category: 'Warehouse IT & Technical Infrastructure',
+        items: [
+          'LAN/WAN Structured Cabling, RJ45 Termination & Patch Panel Management',
+          'Switch, Router & Server Rack Equipment Installation & Troubleshooting',
+          'IP CCTV Surveillance Camera Maintenance & Real-Time Monitoring',
+          'Biometric Fingerprint & Facial Recognition Terminal Servicing',
+          'Computer Hardware Diagnostic Repair & Preventive Maintenance',
+          'Barcode Scanner, Handheld Terminal & Label Printer Setup',
+        ],
+      },
+      {
+        category: 'Software, Data & Digital Logistics',
+        items: [
+          'Advanced Microsoft Excel (Formulas, VLOOKUP, Inventory Tracking Sheets)',
+          '98% Audited High-Volume Data Entry Accuracy (Golden Harvest Standard)',
+          'Warehouse Management System (WMS) Terminal Operations Readiness',
+          'Automated Shift Reporting & Digital Documentation Workflows',
+        ],
+      },
+      {
+        category: 'Operational Compliance & Safety',
+        items: [
+          'Strict Compliance with DHL 5S Workplace Discipline & Electrical Safety',
+          'Comprehension of English Technical SOPs & Quality Work Orders',
+          'Physical Stamina for 8-Hour Shifts, Night Shifts & Authorized Overtime',
+          'Valid International Passport (BL0984521, Validity >4 Years) & Clean Police Record',
+        ],
+      },
+    ],
+    experiences: [
+      {
+        id: 'exp-1',
+        role: 'IT & Automation Specialist',
+        company: 'Perlov Medical Services Ltd',
+        location: 'Dhaka, Bangladesh',
+        startDate: '02/2023',
+        endDate: 'Present',
+        isCurrent: true,
+        bulletPoints: [
+          'Administered organizational computer hardware, LAN/WAN structured cabling, routers, and switches across healthcare and office facilities.',
+          'Maintained 99.5% operational uptime for IP CCTV camera surveillance network and biometric facial/fingerprint attendance terminals.',
+          'Executed rapid diagnosis and replacement of faulty power supplies, network connectors, RAM modules, and storage drives.',
+          'Enforced electrical safety, electrostatic discharge (ESD) precautions, and hygienic cable routing standards.',
+          'Utilized advanced Microsoft Excel and AI automation tools to generate weekly incident logs and preventive maintenance reports.',
+        ],
+      },
+      {
+        id: 'exp-2',
+        role: 'Data Entry Operator',
+        company: 'Golden Harvest InfoTech Ltd',
+        location: 'Dhaka, Bangladesh',
+        startDate: '11/2022',
+        endDate: '02/2023',
+        isCurrent: false,
+        bulletPoints: [
+          'Processed high-volume alphanumeric inventory and customer records with a verified 98% accuracy score under strict deadlines.',
+          'Conducted regular batch reconciliation, barcode data verification, and digital archiving in Microsoft Excel and corporate databases.',
+          'Demonstrated exceptional physical stamina, rapid keyboard input speed, and focused attention during demanding rotating shift schedules.',
+        ],
+      },
+    ],
+    coverLetter: {
+      senderName: 'Md. Shakil Hossain',
+      senderAddress: '569/B, Mogbazar, Dhaka-1217, Bangladesh',
+      senderPhone: '+880 1701982218',
+      senderEmail: 'shakil159951@gmail.com',
+      recipientName: 'The Managing Director / Recruitment Division',
+      recipientTitle: 'Bangladesh Overseas Employment and Services Limited (BOESL) / DHL Supply Chain Malaysia',
+      companyName: 'BOESL (G2G Recruitment for DHL Supply Chain (Malaysia) Sdn. Bhd.)',
+      companyAddress: 'Probashi Kallyan Bhaban (4th Floor), 71-72 Old Elephant Road, Eskaton Garden',
+      companyCity: 'Dhaka-1000',
+      companyCountry: 'Bangladesh',
+      date: '2026-11-06',
+      subject: 'Application for the post of Technical Skill Worker (BOESL Circular No: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪)',
+      salutation: 'Respected Sir / Madam,',
+      openingParagraph:
+        'With reference to the official BOESL recruitment circular (Circular No: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪) for zero-migration-cost overseas employment at DHL SUPPLY CHAIN (MALAYSIA) SDN. BHD., I hereby formally submit my application for the post of Technical Skill Worker.',
+      experienceParagraph:
+        'I hold a 4-year Diploma in Computer Engineering (CSE) from Naogaon Polytechnic Institute (Passing Year: 2021, CGPA: 3.78 out of 4.00) and an SSC in Science from Mithapur B.L. High School (Passing Year: 2017, GPA: 4.73 out of 5.00). In my professional role as an IT & Automation Specialist at Perlov Medical Services Ltd in Dhaka, I actively manage computer hardware, structured network cabling, switch and server rack installations, IP CCTV surveillance, and biometric access devices. Furthermore, at Golden Harvest InfoTech Ltd, I maintained a verified 98% accuracy rate in alphanumeric data entry and advanced Microsoft Excel reporting.',
+      motivationParagraph:
+        'I am deeply passionate about modern automated supply chain operations. I am fully proficient in Microsoft Excel (VLOOKUP, Pivot Tables, inventory tracking), follow English Standard Operating Procedures (SOPs) with precision, and respect DHL’s world-class 5S safety and operational discipline. I take genuine pride in troubleshooting equipment rapidly to maintain uninterrupted warehouse uptime.',
+      relocationParagraph:
+        'I am 24 years of age, physically robust, medical-fit, and have completed my online registration on the BOESL portal (https://employee.oep.gov.bd/employee/registration). I possess a valid International Passport (No: BL0984521, valid for over 4 years), original academic certificates and transcripts, clean government police clearance, and 4 copies of lab-print passport photographs. I am completely ready for the 3-year renewable contract, 8-hour daily shifts, authorized overtime, and immediate deployment to Malaysia.',
+      closingParagraph:
+        'Please find enclosed my complete Curriculum Vitae detailing my technical qualifications and verifiable employment records. I welcome the opportunity to present my credentials at the BOESL interview in Dhaka. Thank you for your time and kind consideration.',
+      signoff: 'Yours respectfully,',
+    },
+  },
+
+  logistics: {
+    id: 'logistics',
+    name: 'Operations Assistant (Warehouse & Inventory)',
+    nameBn: 'অপারেশনস অ্যাসিস্ট্যান্ট (১১২ পদ - DHL মালয়েশিয়া)',
+    iconName: 'Truck',
+    targetJobTitle: 'Operations Assistant (Warehouse & Logistics) - DHL Supply Chain Malaysia',
+    summary:
+      'Physically agile, highly dependable Operations Assistant candidate tailored for DHL Supply Chain (Malaysia) Sdn. Bhd. (BOESL Circular No: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪, 112 Posts). Holds an SSC Science (GPA: 4.73) and 4-year Polytechnic Diploma (CGPA: 3.78) with proven industry experience in high-speed, 98% accuracy data management at Golden Harvest InfoTech Ltd and facility technical operations at Perlov Medical Services. Highly proficient in Microsoft Excel, barcode scanner operations, inventory logging, goods receiving, and English work orders.',
+    skills: [
+      {
+        category: 'Warehouse & Logistics Operations',
+        items: [
+          'Goods Receiving, Staging, Barcode Scanning & RFID Tagging',
+          'Carton Packing, Pallet Stacking & Shrink-Wrap Machine Operation',
+          'Inventory Counting, Stock Discrepancy Checking & Batch Audits',
+          'Strict Compliance with DHL 5S Workplace Cleanliness & Safety',
+        ],
+      },
+      {
+        category: 'Data Entry & Computer Literacy (Mandatory)',
+        items: [
+          'Advanced Microsoft Excel (Stock Registers, Formulas & Dispatches)',
+          '98% Verified Accuracy in High-Speed Alphanumeric Entry',
+          'Warehouse Terminal Logging & Label Generation',
+          'Fast English & Bengali Typing for Shift Handover Logs',
+        ],
+      },
+      {
+        category: 'Personal Fitness & Relocation Attributes',
+        items: [
+          'Physical Stamina for Sustained Heavy Lifting & Standing Shifts',
+          'Working Proficiency in English (Spoken & Written Work Orders)',
+          'Valid International Passport (Validity >4 Years) & Clean Police Record',
+          'Ready for 3-Year Renewable Contract, 8 Hours/Day, 6 Days/Week',
+        ],
+      },
+    ],
+    experiences: [
+      {
+        id: 'exp-1',
+        role: 'Operations & Data Entry Specialist',
+        company: 'Golden Harvest InfoTech Ltd',
+        location: 'Dhaka, Bangladesh',
+        startDate: '11/2022',
+        endDate: '02/2023',
+        isCurrent: false,
+        bulletPoints: [
+          'Executed rapid alphanumeric stock data entry and digital cataloging with an audited 98% accuracy score.',
+          'Assisted with inventory batch counting, warehouse record verification, and dispatch sheet preparation in Microsoft Excel.',
+          'Demonstrated high physical stamina and focus during prolonged standing shifts and heavy cataloging workloads.',
+        ],
+      },
+      {
+        id: 'exp-2',
+        role: 'Technical Operations Assistant',
+        company: 'Perlov Medical Services Ltd',
+        location: 'Dhaka, Bangladesh',
+        startDate: '02/2023',
+        endDate: 'Present',
+        isCurrent: true,
+        bulletPoints: [
+          'Maintained equipment logs, barcode tracking, and physical inventory of computer accessories and medical consumables.',
+          'Assisted in loading, unboxing, arranging, and tracking technical cargo across departmental storage facilities.',
+          'Maintained pristine safety, hygiene, and fire prevention protocol compliance across all work areas.',
+        ],
+      },
+    ],
+    coverLetter: {
+      senderName: 'Md. Shakil Hossain',
+      senderAddress: '569/B, Mogbazar, Dhaka-1217, Bangladesh',
+      senderPhone: '+880 1701982218',
+      senderEmail: 'shakil159951@gmail.com',
+      recipientName: 'The Managing Director / Selection Board',
+      recipientTitle: 'BOESL & DHL Supply Chain (Malaysia) Sdn. Bhd.',
+      companyName: 'Bangladesh Overseas Employment and Services Limited (BOESL)',
+      companyAddress: 'Probashi Kallyan Bhaban (4th Floor), 71-72 Old Elephant Road, Eskaton Garden',
+      companyCity: 'Dhaka-1000',
+      companyCountry: 'Bangladesh',
+      date: '2026-11-06',
+      subject: 'Application for the post of Operations Assistant (BOESL Circular No: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪)',
+      salutation: 'Respected Sir / Madam,',
+      openingParagraph:
+        'I am pleased to formally apply for the position of Operations Assistant (112 posts) at DHL SUPPLY CHAIN (MALAYSIA) SDN. BHD., as advertised in the government recruitment circular by BOESL (Circular No: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪).',
+      experienceParagraph:
+        'I have successfully completed my SSC in Science (GPA: 4.73/5.00) and hold a 4-year Diploma in Computer Engineering (CGPA: 3.78/4.00). Through my work at Golden Harvest InfoTech Ltd and Perlov Medical Services Ltd, I have developed disciplined experience in warehouse inventory data entry (98% accuracy score), barcode verification, physical cargo handling, and Microsoft Excel management.',
+      motivationParagraph:
+        'I am 24 years old, physically energetic, and eager to perform warehouse operations, carton packing, barcode scanning, and stock keeping according to DHL’s international standard operating procedures. I understand and communicate well in English and am committed to respectful teamwork.',
+      relocationParagraph:
+        'I have already registered on the BOESL online portal (https://employee.oep.gov.bd/employee/registration). My original educational certificates, original international passport (BL0984521, valid >4 years), clean police clearance, and 4 copies of passport photos are ready for immediate physical submission and interview. I am prepared for the 3-year contract and deployment to Malaysia.',
+      closingParagraph:
+        'Enclosed is my complete Curriculum Vitae. I look forward to attending the interview at BOESL. Thank you for your consideration.',
+      signoff: 'Yours respectfully,',
+    },
+  },
+
+  admin: {
+    id: 'admin',
+    name: 'Warehouse MIS & Inventory Clerk',
+    nameBn: 'ওয়্যারহাউজ ডাটা এন্ট্রি ও এমআইএস',
+    iconName: 'FileText',
+    targetJobTitle: 'Warehouse MIS & Inventory Data Clerk - DHL Supply Chain Malaysia',
+    summary:
+      'Detail-driven Warehouse MIS & Inventory Data Clerk candidate with proven 98% accuracy in large-scale data entry at Golden Harvest InfoTech Ltd and IT infrastructure maintenance at Perlov Medical Services Ltd. Prepared for DHL Supply Chain Malaysia via BOESL zero-migration circular. Advanced Microsoft Excel expert (Formulas, Pivot Tables, VLOOKUP, Inventory Discrepancy Audits) with Diploma in Computer Engineering and fluent English comprehension.',
+    skills: [
+      {
+        category: 'Logistics Data & Computer Systems',
+        items: [
+          'Advanced Microsoft Excel (VLOOKUP, Pivot Tables, Conditional Formatting)',
+          'High-Speed Alphanumeric Data Entry with 98% Audited Accuracy',
+          'Warehouse Dispatch, Inbound Receiving & Bill of Lading Logging',
+          'Hardware Troubleshooting, Printer & Scanner Configuration',
+        ],
+      },
+      {
+        category: 'Office & Facility Administration',
+        items: [
+          'Structured Documentation, Batch Filing & Digital Archiving',
+          'Biometric Time-Attendance Log Reconciliation',
+          'Clear Email Drafting & Shift Handover Reports in English',
+          'Strict Compliance with Information Security & DHL Quality Standards',
+        ],
+      },
+      {
+        category: 'Readiness & Mobility',
+        items: [
+          'Immediate Availability for 3-Year Contract in Malaysia',
+          'Valid International Passport (Validity >4 Years) & Clean Police Clearance',
+          'Strong Discipline, Punctuality & Teamwork Under Pressure',
+        ],
+      },
+    ],
+    experiences: authenticWorkExperiences,
+    coverLetter: {
+      senderName: 'Md. Shakil Hossain',
+      senderAddress: '569/B, Mogbazar, Dhaka-1217, Bangladesh',
+      senderPhone: '+880 1701982218',
+      senderEmail: 'shakil159951@gmail.com',
+      recipientName: 'The Selection Committee / Recruitment Team',
+      recipientTitle: 'BOESL & DHL Supply Chain (Malaysia) Sdn. Bhd.',
+      companyName: 'Bangladesh Overseas Employment and Services Limited (BOESL)',
+      companyAddress: 'Probashi Kallyan Bhaban, Eskaton Garden',
+      companyCity: 'Dhaka-1000',
+      companyCountry: 'Bangladesh',
+      date: '2026-11-06',
+      subject: 'Application for Warehouse MIS & Inventory Data Clerk (BOESL Circular No: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪)',
+      salutation: 'Respected Sir / Madam,',
+      openingParagraph:
+        'I am applying for the post of Warehouse MIS & Inventory Data Clerk at DHL SUPPLY CHAIN (MALAYSIA) SDN. BHD. through the BOESL government recruitment circular (Circular No: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪).',
+      experienceParagraph:
+        'With a Diploma in Computer Engineering (CGPA: 3.78) and verified industry experience managing data entry with 98% accuracy at Golden Harvest InfoTech Ltd and IT infrastructure at Perlov Medical Services Ltd, I am proficient in MS Excel, inventory logs, and system operations.',
+      motivationParagraph:
+        'I ensure zero discrepancies in data entry, quick documentation turnaround, and high system reliability. I communicate clearly in English and follow standard operating procedures meticulously.',
+      relocationParagraph:
+        'I hold a valid International Passport (BL0984521, valid >4 years), clean police clearance, and have completed my registration on employee.oep.gov.bd. I am ready for immediate appointment.',
+      closingParagraph:
+        'Thank you for reviewing my application. I look forward to meeting with you at the interview.',
+      signoff: 'Yours respectfully,',
+    },
+  },
+
+  factory: {
+    id: 'factory',
+    name: 'Industrial Equipment & Assembly Operator',
+    nameBn: 'ইন্ডাস্ট্রিয়াল ইকুইপমেন্ট অপারেটর',
+    iconName: 'Factory',
+    targetJobTitle: 'Industrial Equipment & Warehouse Assembly Operator - Malaysia',
+    summary:
+      'Energetic and technically trained candidate with a Diploma in Computer Engineering and proven equipment maintenance background at Perlov Medical Services Ltd. Experienced in mechanical assembly, equipment calibration, safety protocol enforcement, and fast-paced operational shifts.',
+    skills: [
+      {
+        category: 'Equipment & Maintenance',
+        items: ['Assembly Line Support', 'Electrical Safety & Machine Cleaning', 'Basic Tool Handling', 'Incident Reporting'],
+      },
+      {
+        category: 'Personal Disciplines',
+        items: ['Physical Stamina', 'Shift Rotation', 'DHL 5S Compliance', 'Punctuality'],
+      },
+    ],
+    experiences: authenticWorkExperiences,
+    coverLetter: {
+      senderName: 'Md. Shakil Hossain',
+      senderAddress: '569/B, Mogbazar, Dhaka-1217, Bangladesh',
+      senderPhone: '+880 1701982218',
+      senderEmail: 'shakil159951@gmail.com',
+      recipientName: 'The Hiring Committee',
+      recipientTitle: 'BOESL & DHL Supply Chain Malaysia',
+      companyName: 'BOESL G2G Recruitment',
+      companyAddress: 'Dhaka',
+      companyCity: 'Dhaka',
+      companyCountry: 'Bangladesh',
+      date: '2026-11-06',
+      subject: 'Application for Industrial Equipment & Warehouse Operator',
+      salutation: 'Dear Sir / Madam,',
+      openingParagraph: 'I am applying for the position of Industrial Equipment & Warehouse Operator for DHL Supply Chain Malaysia.',
+      experienceParagraph: 'I hold an engineering diploma and bring experience with equipment maintenance, hardware diagnostics, and safe working protocols.',
+      motivationParagraph: 'I am disciplined, follow safety instructions diligently, and work with high energy.',
+      relocationParagraph: 'I have a valid passport and clean police clearance, ready for deployment.',
+      closingParagraph: 'Thank you for your consideration.',
+      signoff: 'Yours respectfully,',
+    },
+  },
+
+  hospitality: {
+    id: 'hospitality',
+    name: 'Facilities & Logistics Support Assistant',
+    nameBn: 'ফ্যাসিলিটিজ ও লজিস্টিকস সাপোর্ট',
+    iconName: 'Hotel',
+    targetJobTitle: 'Facilities & Logistics Support Assistant - Malaysia',
+    summary:
+      'Polite, customer-oriented support assistant with high-standard hygiene and facility maintenance experience from healthcare facility operations at Perlov Medical Services Ltd. Ready for international logistics facility support in Malaysia.',
+    skills: [
+      {
+        category: 'Facilities Support',
+        items: ['Premises Maintenance', 'Sanitation & Hygiene Protocols', 'Stock Storing', 'Support Assistance'],
+      },
+      {
+        category: 'Communication',
+        items: ['English Communication', 'Courteous Demeanor', 'Safety Compliance', 'Team Support'],
+      },
+    ],
+    experiences: authenticWorkExperiences,
+    coverLetter: {
+      senderName: 'Md. Shakil Hossain',
+      senderAddress: '569/B, Mogbazar, Dhaka-1217, Bangladesh',
+      senderPhone: '+880 1701982218',
+      senderEmail: 'shakil159951@gmail.com',
+      recipientName: 'The HR Director',
+      recipientTitle: 'Human Resources',
+      companyName: 'BOESL Malaysia Recruitment',
+      companyAddress: 'Dhaka',
+      companyCity: 'Dhaka',
+      companyCountry: 'Bangladesh',
+      date: '2026-11-06',
+      subject: 'Application for Facilities & Logistics Support Assistant',
+      salutation: 'Dear Hiring Team,',
+      openingParagraph: 'I am writing to express my interest in the Facilities & Logistics Support Assistant position.',
+      experienceParagraph: 'I bring disciplined experience from healthcare facility support and equipment operations.',
+      motivationParagraph: 'I am reliable, courteous, and maintain high standards of workplace cleanliness.',
+      relocationParagraph: 'I am ready for immediate overseas deployment with valid documentation.',
+      closingParagraph: 'Thank you for your time.',
+      signoff: 'Yours respectfully,',
+    },
+  },
+
+  agriculture: {
+    id: 'agriculture',
+    name: 'Agricultural Technology & Operations Assistant',
+    nameBn: 'এগ্রিকালচারাল টেকনোলজি অ্যাসিস্ট্যান্ট',
+    iconName: 'Sprout',
+    targetJobTitle: 'Agricultural Technology & Processing Assistant',
+    summary:
+      'Hardworking candidate with rural agricultural background in Naogaon and engineering diploma. Experienced in operating automated processing equipment, monitoring climate logs, and inventory data tracking.',
+    skills: [
+      {
+        category: 'Operations',
+        items: ['Field & Nursery Care', 'Processing Machine Monitoring', 'Safe Chemical & Tool Handling', 'Data Logging'],
+      },
+      {
+        category: 'Physical Attributes',
+        items: ['Outdoor Endurance', 'Shift Adaptability', 'Team Cooperation', 'Punctuality'],
+      },
+    ],
+    experiences: authenticWorkExperiences,
+    coverLetter: {
+      senderName: 'Md. Shakil Hossain',
+      senderAddress: '569/B, Mogbazar, Dhaka-1217, Bangladesh',
+      senderPhone: '+880 1701982218',
+      senderEmail: 'shakil159951@gmail.com',
+      recipientName: 'The Recruitment Team',
+      recipientTitle: 'Operations Department',
+      companyName: 'BOESL Agricultural Operations',
+      companyAddress: 'Dhaka',
+      companyCity: 'Dhaka',
+      companyCountry: 'Bangladesh',
+      date: '2026-11-06',
+      subject: 'Application for Agricultural Technology & Operations Assistant',
+      salutation: 'Dear Hiring Manager,',
+      openingParagraph: 'I am applying for the Agricultural Operations Assistant role.',
+      experienceParagraph: 'Growing up in an agricultural district and holding a technical diploma, I combine physical stamina with technical equipment care.',
+      motivationParagraph: 'I work with high discipline and adapt easily to outdoor environments.',
+      relocationParagraph: 'My passport and police clearance are in order for immediate departure.',
+      closingParagraph: 'Thank you for your consideration.',
+      signoff: 'Yours respectfully,',
+    },
+  },
+};
 
 // =========================================================================
 // 1. BANGLADESH PRESETS (Authentic Corporate & Technical Application)

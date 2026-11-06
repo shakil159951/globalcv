@@ -15,14 +15,40 @@ export const EmailTemplateModal: React.FC<EmailTemplateModalProps> = ({ isOpen, 
 
   const isGulf = profile.region === 'middle_east';
   const isBD = profile.region === 'bangladesh';
+  const isMalaysia = profile.region === 'malaysia';
 
-  const emailSubject = isBD
+  const emailSubject = isMalaysia
+    ? `Application: ${profile.personalInfo.targetJobTitle} (BOESL Circular No: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪) - Md. Shakil Hossain`
+    : isBD
     ? `Application for the position of ${profile.personalInfo.targetJobTitle} - Md. Shakil Hossain`
     : isGulf
     ? `Job Application: ${profile.personalInfo.targetJobTitle} - Md. Shakil Hossain (Gulf Employment Visa Candidate)`
     : `Job Application: ${profile.personalInfo.targetJobTitle} - Md. Shakil Hossain (European Work Permit Candidate)`;
 
-  const emailBody = isBD
+  const emailBody = isMalaysia
+    ? `Dear Selection Board / Recruitment Division,
+Bangladesh Overseas Employment and Services Limited (BOESL) & DHL Supply Chain Malaysia,
+
+I hope this message finds you well.
+
+I am writing to formally submit my candidature for the position of ${profile.personalInfo.targetJobTitle} under the government recruitment circular (BOESL Circular No: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪) for DHL SUPPLY CHAIN (MALAYSIA) SDN. BHD.
+
+I hold a 4-year Diploma in Computer Engineering (CSE) from Naogaon Polytechnic Institute (Passing Year: 2021, CGPA: 3.78/4.00) and an SSC in Science (Passing Year: 2017, GPA: 4.73/5.00). My industry experience includes hands-on IT infrastructure, LAN/WAN cabling, IP CCTV surveillance, and terminal maintenance at Perlov Medical Services Ltd, as well as 98% accuracy data management and MS Excel operations at Golden Harvest InfoTech Ltd.
+
+I have completed my online registration on the BOESL portal (https://employee.oep.gov.bd/employee/registration). My valid International Passport (BL0984521, validity >4 years), clean police clearance, original educational certificates, and 4 copies of passport photos are ready for immediate physical submission and interview.
+
+Please find attached my detailed Curriculum Vitae and formal Application Letter for your kind review.
+
+Thank you very much for your time and kind consideration.
+
+Yours respectfully,
+
+Md. Shakil Hossain
+Phone / WhatsApp: ${profile.personalInfo.phone}
+Email: ${profile.personalInfo.email}
+Address: ${profile.personalInfo.address}, ${profile.personalInfo.city}, ${profile.personalInfo.country}
+Permanent Address: Mithapur, Badalgachhi, Naogaon, Bangladesh`
+    : isBD
     ? `Dear Hiring Team / Human Resources,
 
 I hope this email finds you well.

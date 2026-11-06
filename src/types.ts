@@ -1,4 +1,4 @@
-export type RegionId = 'bangladesh' | 'europe' | 'middle_east';
+export type RegionId = 'bangladesh' | 'malaysia' | 'europe' | 'middle_east';
 
 export type SectorId = 'agriculture' | 'logistics' | 'hospitality' | 'factory' | 'it' | 'admin';
 
@@ -91,6 +91,8 @@ export interface CandidateProfile {
     religion?: string;
     permanentAddress?: string;
     bloodGroup?: string;
+    signatureUrl?: string;
+    showSignature?: boolean;
   };
   summary: string;
   sector: SectorId;
@@ -123,4 +125,5 @@ export interface CoverLetterData {
   relocationParagraph: string;
   closingParagraph: string;
   signoff: string;
+  signatureUrl?: string;
 }

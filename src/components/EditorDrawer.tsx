@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { CandidateProfile, WorkExperience, EducationItem, SkillCategory } from '../types';
-import { User, Briefcase, GraduationCap, Wrench, Languages, Car, Shield, Image, Plus, Trash2, RotateCcw } from 'lucide-react';
+import { User, Briefcase, GraduationCap, Wrench, Languages, Car, Shield, Image, Plus, Trash2, RotateCcw, PenTool, Check } from 'lucide-react';
+import { SignatureModal } from './SignatureModal';
 
 interface EditorDrawerProps {
   profile: CandidateProfile;
@@ -9,8 +10,10 @@ interface EditorDrawerProps {
 }
 
 export const EditorDrawer: React.FC<EditorDrawerProps> = ({ profile, onChange, onResetSector }) => {
-  const [activeTab, setActiveTab] = React.useState<'personal' | 'experience' | 'education' | 'skills' | 'visa'>('personal');
+  const [activeTab, setActiveTab] = useState<'personal' | 'experience' | 'education' | 'skills' | 'visa'>('personal');
+  const [isSignModalOpen, setIsSignModalOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const signatureFileInputRef = useRef<HTMLInputElement>(null);
 
   const updatePersonal = (field: keyof CandidateProfile['personalInfo'], value: any) => {
     onChange({
@@ -28,6 +31,18 @@ export const EditorDrawer: React.FC<EditorDrawerProps> = ({ profile, onChange, o
       const reader = new FileReader();
       reader.onload = () => {
         updatePersonal('photoUrl', reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSignatureUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        updatePersonal('signatureUrl', reader.result as string);
+        updatePersonal('showSignature', true);
       };
       reader.readAsDataURL(file);
     }
@@ -197,8 +212,90 @@ export const EditorDrawer: React.FC<EditorDrawerProps> = ({ profile, onChange, o
               </div>
             </div>
 
+            {/* Signature Section */}
+            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                {profile.personalInfo.signatureUrl ? (
+                  <div className="h-14 w-28 bg-white border border-slate-300 rounded p-1 flex items-center justify-center shadow-xs">
+                    <img
+                      src={profile.personalInfo.signatureUrl}
+                      alt="Signature"
+                      className="max-h-full max-w-full object-contain filter contrast-125"
+                    />
+                  </div>
+                ) : (
+                  <div className="h-14 w-28 rounded border border-dashed border-slate-300 bg-white flex flex-col items-center justify-center text-slate-400">
+                    <PenTool className="w-4 h-4 mb-0.5 text-slate-400" />
+                    <span className="text-[9px]">স্বাক্ষর নেই</span>
+                  </div>
+                )}
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <p className="font-semibold text-slate-800">ডিজিটাল স্বাক্ষর (Signature)</p>
+                    {profile.personalInfo.signatureUrl && (
+                      <span className="bg-emerald-100 text-emerald-800 text-[9px] font-bold px-1.5 py-0.2 rounded">
+                        সংযুক্ত
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-[11px] text-slate-500">সিভি ও কভার লেটারে সরাসরি প্রিন্ট হবে</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-1.5 shrink-0">
+                <input
+                  type="file"
+                  ref={signatureFileInputRef}
+                  onChange={handleSignatureUpload}
+                  accept="image/*"
+                  className="hidden"
+                />
+                <button
+                  type="button"
+                  onClick={() => signatureFileInputRef.current?.click()}
+                  className="px-2.5 py-1.5 bg-white border border-slate-300 rounded text-slate-700 hover:bg-slate-100 font-medium text-[11px]"
+                  title="ফাইল থেকে আপলোড"
+                >
+                  ফাইল আপলোড
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsSignModalOpen(true)}
+                  className="px-2.5 py-1.5 bg-[#0e417a] text-white rounded hover:bg-[#0c3563] font-medium text-[11px] flex items-center gap-1 shadow-2xs"
+                >
+                  <PenTool className="w-3 h-3" />
+                  <span>আঁকুন / সাইন</span>
+                </button>
+                {profile.personalInfo.signatureUrl && (
+                  <button
+                    type="button"
+                    onClick={() => updatePersonal('signatureUrl', '')}
+                    className="px-2 py-1.5 text-rose-600 hover:bg-rose-50 rounded text-[11px]"
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            </div>
+
             <div className="space-y-2 p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs">
               <p className="font-semibold text-slate-800 text-[11px] uppercase tracking-wider">সিভি ডিসপ্লে অপশন (Display Toggles)</p>
+              
+              <div className="flex items-center justify-between">
+                <div>
+                  <label htmlFor="showSignatureToggle" className="text-slate-700 font-medium cursor-pointer block">
+                    সিভি ও কভার লেটারে স্বাক্ষর প্রদর্শন (Show Signature)
+                  </label>
+                  <span className="text-[10px] text-slate-500">সিভির নিচে প্রার্থীর নাম ও স্বাক্ষর দেখাবে</span>
+                </div>
+                <input
+                  type="checkbox"
+                  id="showSignatureToggle"
+                  checked={profile.personalInfo.showSignature !== false}
+                  onChange={(e) => updatePersonal('showSignature', e.target.checked)}
+                  className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                />
+              </div>
               
               <div className="flex items-center justify-between">
                 <label htmlFor="showPhoto" className="text-slate-700 font-medium cursor-pointer">
@@ -824,6 +921,18 @@ export const EditorDrawer: React.FC<EditorDrawerProps> = ({ profile, onChange, o
           </div>
         )}
       </div>
+
+      {/* Signature Modal */}
+      <SignatureModal
+        isOpen={isSignModalOpen}
+        onClose={() => setIsSignModalOpen(false)}
+        currentSignature={profile.personalInfo.signatureUrl || ''}
+        candidateName={`${profile.personalInfo.firstName} ${profile.personalInfo.lastName}`}
+        onSave={(dataUrl) => {
+          updatePersonal('signatureUrl', dataUrl);
+          updatePersonal('showSignature', true);
+        }}
+      />
     </div>
   );
 };

@@ -3,9 +3,11 @@ import { CandidateProfile, CoverLetterData, RegionId, SectorId, TemplateId } fro
 import {
   defaultCandidateProfile,
   sectorPresetsBangladesh,
+  sectorPresetsMalaysia,
   sectorPresetsEurope,
   sectorPresetsMiddleEast,
   baseLanguagesBangladesh,
+  baseLanguagesMalaysia,
   baseLanguagesEurope,
   baseLanguagesMiddleEast,
 } from './data/defaultData';
@@ -22,6 +24,8 @@ import { EmailTemplateModal } from './components/EmailTemplateModal';
 import { DocumentChecklistModal } from './components/DocumentChecklistModal';
 import { InterviewPrepModal } from './components/InterviewPrepModal';
 import { ScorecardModal } from './components/ScorecardModal';
+import { BOESLMalaysiaModal } from './components/BOESLMalaysiaModal';
+import { SignatureModal } from './components/SignatureModal';
 import {
   Sprout,
   Truck,
@@ -44,6 +48,7 @@ import {
   MessageSquare,
   Star,
   Download,
+  PenTool,
 } from 'lucide-react';
 
 export default function App() {
@@ -92,15 +97,26 @@ export default function App() {
     agriculture: sectorPresetsMiddleEast.agriculture.coverLetter,
   });
 
+  const [coverLettersMalaysia, setCoverLettersMalaysia] = useState<Record<SectorId, CoverLetterData>>({
+    it: sectorPresetsMalaysia.it.coverLetter,
+    logistics: sectorPresetsMalaysia.logistics.coverLetter,
+    admin: sectorPresetsMalaysia.admin.coverLetter,
+    factory: sectorPresetsMalaysia.factory.coverLetter,
+    hospitality: sectorPresetsMalaysia.hospitality.coverLetter,
+    agriculture: sectorPresetsMalaysia.agriculture.coverLetter,
+  });
+
   const [showEditor, setShowEditor] = useState<boolean>(true);
   const [isGuideOpen, setIsGuideOpen] = useState<boolean>(false);
   const [isEmailModalOpen, setIsEmailModalOpen] = useState<boolean>(false);
   const [isChecklistOpen, setIsChecklistOpen] = useState<boolean>(false);
   const [isInterviewOpen, setIsInterviewOpen] = useState<boolean>(false);
   const [isScorecardOpen, setIsScorecardOpen] = useState<boolean>(false);
+  const [isBOESLModalOpen, setIsBOESLModalOpen] = useState<boolean>(false);
+  const [isGlobalSignModalOpen, setIsGlobalSignModalOpen] = useState<boolean>(false);
   const [copiedNotification, setCopiedNotification] = useState<boolean>(false);
 
-  // Switch between Bangladesh, Europe, and Middle East
+  // Switch between Bangladesh, Malaysia (BOESL), Europe, and Middle East
   const handleSelectRegion = (newRegion: RegionId) => {
     setRegion(newRegion);
 
@@ -114,6 +130,11 @@ export default function App() {
       newTemplate = 'bd_corporate';
       newLanguages = baseLanguagesBangladesh;
       visaText = 'Bangladeshi Citizen | Permanent Resident | Ready for Immediate Joining';
+    } else if (newRegion === 'malaysia') {
+      presets = sectorPresetsMalaysia;
+      newTemplate = 'bd_corporate';
+      newLanguages = baseLanguagesMalaysia;
+      visaText = 'BOESL G2G Zero-Migration Candidate · Ready for DHL Supply Chain Malaysia';
     } else if (newRegion === 'middle_east') {
       presets = sectorPresetsMiddleEast;
       newTemplate = 'gulf_executive';
@@ -140,11 +161,71 @@ export default function App() {
     }));
   };
 
+  // Dedicated 1-Click BOESL DHL Malaysia Circular Preset Loader
+  const handleApplyBOESLPreset = (sectorId: SectorId, targetTitle?: string) => {
+    setRegion('malaysia');
+    setActiveSector(sectorId);
+    setActiveTemplate('bd_corporate');
+
+    const preset = sectorPresetsMalaysia[sectorId] || sectorPresetsMalaysia.it;
+
+    setProfile((prev) => ({
+      ...prev,
+      region: 'malaysia',
+      sector: sectorId,
+      personalInfo: {
+        ...prev.personalInfo,
+        targetJobTitle: targetTitle || preset.targetJobTitle,
+        visaStatus: 'BOESL G2G Zero-Migration Candidate · Ready for DHL Supply Chain Malaysia',
+        showSignature: true,
+      },
+      summary: preset.summary,
+      experiences: preset.experiences,
+      skills: preset.skills,
+      languages: [...baseLanguagesMalaysia],
+    }));
+  };
+
+  // Universal Signature Update (applied everywhere)
+  const handleUpdateSignature = (dataUrl: string) => {
+    setProfile((prev) => ({
+      ...prev,
+      personalInfo: {
+        ...prev.personalInfo,
+        signatureUrl: dataUrl,
+        showSignature: true,
+      },
+    }));
+
+    if (region === 'malaysia') {
+      setCoverLettersMalaysia((prev) => ({
+        ...prev,
+        [activeSector]: { ...prev[activeSector], signatureUrl: dataUrl },
+      }));
+    } else if (region === 'bangladesh') {
+      setCoverLettersBD((prev) => ({
+        ...prev,
+        [activeSector]: { ...prev[activeSector], signatureUrl: dataUrl },
+      }));
+    } else if (region === 'middle_east') {
+      setCoverLettersMiddleEast((prev) => ({
+        ...prev,
+        [activeSector]: { ...prev[activeSector], signatureUrl: dataUrl },
+      }));
+    } else {
+      setCoverLettersEurope((prev) => ({
+        ...prev,
+        [activeSector]: { ...prev[activeSector], signatureUrl: dataUrl },
+      }));
+    }
+  };
+
   // Switch Sector preset
   const handleSelectSector = (sectorId: SectorId) => {
     setActiveSector(sectorId);
     let presets = sectorPresetsEurope;
     if (region === 'bangladesh') presets = sectorPresetsBangladesh;
+    else if (region === 'malaysia') presets = sectorPresetsMalaysia;
     else if (region === 'middle_east') presets = sectorPresetsMiddleEast;
 
     const preset = presets[sectorId] || presets.it;
@@ -166,6 +247,7 @@ export default function App() {
   const handleResetSector = () => {
     let presets = sectorPresetsEurope;
     if (region === 'bangladesh') presets = sectorPresetsBangladesh;
+    else if (region === 'malaysia') presets = sectorPresetsMalaysia;
     else if (region === 'middle_east') presets = sectorPresetsMiddleEast;
 
     const preset = presets[activeSector] || presets.it;
@@ -188,6 +270,11 @@ export default function App() {
         ...prev,
         [activeSector]: { ...prev[activeSector], ...updated },
       }));
+    } else if (region === 'malaysia') {
+      setCoverLettersMalaysia((prev) => ({
+        ...prev,
+        [activeSector]: { ...prev[activeSector], ...updated },
+      }));
     } else if (region === 'middle_east') {
       setCoverLettersMiddleEast((prev) => ({
         ...prev,
@@ -207,10 +294,12 @@ export default function App() {
 
   let currentCoverLetter = coverLettersEurope[activeSector];
   if (region === 'bangladesh') currentCoverLetter = coverLettersBD[activeSector];
+  else if (region === 'malaysia') currentCoverLetter = coverLettersMalaysia[activeSector];
   else if (region === 'middle_east') currentCoverLetter = coverLettersMiddleEast[activeSector];
 
   let currentPresets = sectorPresetsEurope;
   if (region === 'bangladesh') currentPresets = sectorPresetsBangladesh;
+  else if (region === 'malaysia') currentPresets = sectorPresetsMalaysia;
   else if (region === 'middle_east') currentPresets = sectorPresetsMiddleEast;
 
   // Build plain text representation
@@ -302,6 +391,8 @@ ${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Nativ
         onOpenChecklist={() => setIsChecklistOpen(true)}
         onOpenInterview={() => setIsInterviewOpen(true)}
         onOpenScorecard={() => setIsScorecardOpen(true)}
+        onOpenSignature={() => setIsGlobalSignModalOpen(true)}
+        onOpenBOESL={() => setIsBOESLModalOpen(true)}
         onDownloadTxt={handleDownloadTxt}
         onDownloadJson={handleDownloadJson}
         activeDoc={activeDoc}
@@ -311,6 +402,63 @@ ${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Nativ
       {/* Main Workspace Controls Bar (no-print) */}
       <section className="no-print bg-white border-b border-slate-200 shadow-2xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 space-y-3">
+          {/* BOESL DHL Malaysia Circular Special 1-Click Banner */}
+          <div className="bg-gradient-to-r from-emerald-900 via-teal-900 to-[#0e417a] text-white rounded-xl p-3.5 flex flex-col lg:flex-row lg:items-center justify-between gap-3 shadow-md border border-emerald-700/50">
+            <div className="flex items-start sm:items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center font-black text-xl shrink-0 border border-white/20">
+                🇲🇾
+              </div>
+              <div className="space-y-0.5">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="bg-emerald-500/30 text-emerald-200 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-400/30 uppercase tracking-wide">
+                    সরকারিভাবে শূন্য অভিবাসন ব্যয় • BOESL Circular
+                  </span>
+                  <span className="text-[11px] text-teal-200 hidden sm:inline">
+                    বেসিক ১,৭০০ RM + ওভারটাইম • বিমানভাড়া ও বাসস্থান ফ্রি
+                  </span>
+                </div>
+                <h3 className="text-xs sm:text-sm font-extrabold text-white">
+                  DHL SUPPLY CHAIN (MALAYSIA) SDN. BHD. — বিশেষ সার্কুলার সিভি
+                </h3>
+                <p className="text-[11px] text-teal-100/80">
+                  বিজ্ঞপ্তি নং: ৪২.০২.০০০০.০৩০.৯৯.০০০.১৯.৩০০৯,২৬/৩১২৪ • পদ: টেকনিক্যাল স্কিল ওয়ার্কার্স ও অপারেশনস অ্যাসিস্ট্যান্ট (১১২ পদ)
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={() => handleApplyBOESLPreset('it', 'Technical Skill Worker - DHL Supply Chain Malaysia')}
+                className={`px-3 py-1.5 font-bold text-xs rounded-lg shadow-xs transition-colors flex items-center gap-1 ${
+                  region === 'malaysia' && activeSector === 'it'
+                    ? 'bg-emerald-300 text-emerald-950 ring-2 ring-white'
+                    : 'bg-white hover:bg-emerald-50 text-emerald-950'
+                }`}
+              >
+                <span>টেকনিক্যাল স্কিল ওয়ার্কার্স</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleApplyBOESLPreset('logistics', 'Operations Assistant (Warehouse) - DHL Supply Chain Malaysia')}
+                className={`px-3 py-1.5 font-bold text-xs rounded-lg shadow-xs transition-colors flex items-center gap-1 ${
+                  region === 'malaysia' && activeSector === 'logistics'
+                    ? 'bg-amber-300 text-amber-950 ring-2 ring-white'
+                    : 'bg-emerald-700 hover:bg-emerald-600 text-white border border-emerald-500'
+                }`}
+              >
+                <span>অপারেশনস অ্যাসিস্ট্যান্ট (১১২ পদ)</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsBOESLModalOpen(true)}
+                className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-xs rounded-lg transition-colors"
+              >
+                সার্কুলার বিবরণ
+              </button>
+            </div>
+          </div>
+
           {/* Top Banner: 10/10 Quality Score Alert Banner */}
           <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-emerald-50 border border-blue-200/80 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
             <div className="flex items-center gap-3">
@@ -327,7 +475,7 @@ ${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Nativ
                   </span>
                 </div>
                 <p className="text-[11px] text-slate-600">
-                  আসল অভিজ্ঞতা ও শিক্ষাগত যোগ্যতা সংরক্ষিত • কুইক-লার্নার মাইন্ডসেট • ৩টি আন্তর্জাতিক অঞ্চল • ডকুমেন্টস চেকলিস্ট ও ইন্টারভিউ প্রস্তুতি
+                  আসল অভিজ্ঞতা ও শিক্ষাগত যোগ্যতা সংরক্ষিত • কুইক-লার্নার মাইন্ডসেট • ৪টি আন্তর্জাতিক অঞ্চল • ডকুমেন্টস চেকলিস্ট ও ইন্টারভিউ প্রস্তুতি
                 </p>
               </div>
             </div>
@@ -343,13 +491,23 @@ ${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Nativ
             </div>
           </div>
 
-          {/* Row 1: 3-Market Target Region Switcher (Bangladesh, Europe, Middle East) */}
+          {/* Row 1: 4-Market Target Region Switcher (Bangladesh, Malaysia BOESL, Europe, Middle East) */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2.5 border-b border-slate-100">
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
                 টার্গেট চাকরির মার্কেট:
               </span>
               <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 rounded-lg">
+                <button
+                  onClick={() => handleSelectRegion('malaysia')}
+                  className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 ${
+                    region === 'malaysia'
+                      ? 'bg-emerald-800 text-white shadow-xs'
+                      : 'text-slate-700 hover:text-emerald-900 font-semibold'
+                  }`}
+                >
+                  <span>🇲🇾 মালয়েশিয়া (BOESL - DHL)</span>
+                </button>
                 <button
                   onClick={() => handleSelectRegion('bangladesh')}
                   className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 ${
@@ -649,11 +807,20 @@ ${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Nativ
                 <span>
                   {activeDoc === 'cv'
                     ? `${region === 'bangladesh' ? 'Bangladeshi Corporate CV' : region === 'middle_east' ? 'Gulf GCC Standard Resume' : 'European Standard Europass'} • ${currentPresets[activeSector]?.name}`
-                    : `Cover Letter • ${currentPresets[activeSector]?.name}`}
+                    : `${region === 'malaysia' ? 'BOESL Malaysia Application' : 'Cover Letter'} • ${currentPresets[activeSector]?.name}`}
                 </span>
               </span>
 
               <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setIsGlobalSignModalOpen(true)}
+                  className="px-2.5 py-1 text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200 rounded-md hover:bg-blue-100 flex items-center gap-1 transition-colors"
+                  title="স্বাক্ষর আপলোড বা পরিবর্তন করুন"
+                >
+                  <PenTool className="w-3 h-3 text-[#0e417a]" />
+                  <span>{profile.personalInfo.signatureUrl ? 'স্বাক্ষর পরিবর্তন' : 'স্বাক্ষর আপলোড'}</span>
+                </button>
+
                 <button
                   onClick={handlePrint}
                   className="text-xs font-semibold text-[#0e417a] hover:underline flex items-center gap-1"
@@ -668,11 +835,36 @@ ${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Nativ
             <div className="w-full flex justify-center overflow-x-auto pb-12 print:pb-0 print:overflow-visible print:block">
               {activeDoc === 'cv' ? (
                 <>
-                  {activeTemplate === 'bd_corporate' && <BDCorporateCV profile={profile} />}
-                  {activeTemplate === 'europass' && <EuropassCV profile={profile} />}
-                  {activeTemplate === 'gulf_executive' && <GulfExecutiveCV profile={profile} />}
-                  {activeTemplate === 'modern' && <ModernCV profile={profile} />}
-                  {activeTemplate === 'compact' && <CompactCV profile={profile} />}
+                  {activeTemplate === 'bd_corporate' && (
+                    <BDCorporateCV
+                      profile={profile}
+                      onUpdateSignature={handleUpdateSignature}
+                    />
+                  )}
+                  {activeTemplate === 'europass' && (
+                    <EuropassCV
+                      profile={profile}
+                      onUpdateSignature={handleUpdateSignature}
+                    />
+                  )}
+                  {activeTemplate === 'gulf_executive' && (
+                    <GulfExecutiveCV
+                      profile={profile}
+                      onUpdateSignature={handleUpdateSignature}
+                    />
+                  )}
+                  {activeTemplate === 'modern' && (
+                    <ModernCV
+                      profile={profile}
+                      onUpdateSignature={handleUpdateSignature}
+                    />
+                  )}
+                  {activeTemplate === 'compact' && (
+                    <CompactCV
+                      profile={profile}
+                      onUpdateSignature={handleUpdateSignature}
+                    />
+                  )}
                 </>
               ) : (
                 <CoverLetterView
@@ -680,12 +872,30 @@ ${profile.languages.map((l) => `${l.name} (${l.levelText || (l.isNative ? 'Nativ
                   onUpdate={handleUpdateCoverLetter}
                   onPrint={handlePrint}
                   region={region}
+                  signatureUrl={profile.personalInfo.signatureUrl}
+                  onUpdateSignature={handleUpdateSignature}
                 />
               )}
             </div>
           </div>
         </div>
       </main>
+
+      {/* BOESL DHL Malaysia Circular Modal */}
+      <BOESLMalaysiaModal
+        isOpen={isBOESLModalOpen}
+        onClose={() => setIsBOESLModalOpen(false)}
+        onApplyPreset={handleApplyBOESLPreset}
+      />
+
+      {/* Global Universal Signature Modal */}
+      <SignatureModal
+        isOpen={isGlobalSignModalOpen}
+        onClose={() => setIsGlobalSignModalOpen(false)}
+        currentSignature={profile.personalInfo.signatureUrl || ''}
+        candidateName={`${profile.personalInfo.firstName} ${profile.personalInfo.lastName}`}
+        onSave={handleUpdateSignature}
+      />
 
       {/* Guidelines Modal */}
       <EuropeanGuideModal

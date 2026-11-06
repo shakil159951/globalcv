@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CandidateProfile } from '../types';
-import { Mail, Phone, MapPin, Globe, Calendar, User, ShieldCheck, FileCheck, Award, Car } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe, Calendar, User, ShieldCheck, FileCheck, Award, Car, PenTool } from 'lucide-react';
+import { SignatureModal } from './SignatureModal';
 
 interface EuropassCVProps {
   profile: CandidateProfile;
+  onUpdateSignature?: (url: string) => void;
 }
 
-export const EuropassCV: React.FC<EuropassCVProps> = ({ profile }) => {
+export const EuropassCV: React.FC<EuropassCVProps> = ({ profile, onUpdateSignature }) => {
+  const [isSignModalOpen, setIsSignModalOpen] = useState(false);
   const { personalInfo, summary, experiences, education, trainings, skills, languages, drivingMobility, additionalCertifications } = profile;
 
   return (
@@ -324,14 +327,46 @@ export const EuropassCV: React.FC<EuropassCVProps> = ({ profile }) => {
           </div>
         )}
 
-        {/* Optional Europass Declaration (Off by default as standard European Europass CVs do not use declarations) */}
-        {personalInfo.showDeclaration && (
-          <div className="avoid-break pt-4 border-t border-slate-200 text-center text-[10.5px] text-slate-500">
-            <p>I hereby certify that the information provided in this Europass Curriculum Vitae is true, complete, and authentic.</p>
-            <p className="font-semibold text-slate-700 mt-0.5">Candidate: {personalInfo.firstName} {personalInfo.lastName} · Dhaka, Bangladesh</p>
+        {/* Europass Declaration & Signature (displayed when showDeclaration is true or signature is present) */}
+        {(personalInfo.showDeclaration || (personalInfo.signatureUrl && personalInfo.showSignature !== false)) && (
+          <div className="avoid-break pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+            <div>
+              <p>I hereby certify that the information provided in this Europass Curriculum Vitae is true, complete, and authentic.</p>
+              <p className="font-semibold text-slate-700 mt-0.5">Candidate: {personalInfo.firstName} {personalInfo.lastName} · Dhaka, Bangladesh</p>
+            </div>
+            {personalInfo.signatureUrl && personalInfo.showSignature !== false && (
+              <div className="flex flex-col items-center sm:items-end shrink-0 group">
+                <img
+                  src={personalInfo.signatureUrl}
+                  alt="Signature"
+                  className="h-10 max-w-[130px] object-contain filter contrast-125"
+                />
+                <span className="text-[9px] text-slate-400">Digital Signature on File</span>
+                {onUpdateSignature && (
+                  <button
+                    type="button"
+                    onClick={() => setIsSignModalOpen(true)}
+                    className="no-print opacity-0 group-hover:opacity-100 text-[10px] text-blue-700 hover:underline transition-opacity"
+                  >
+                    পরিবর্তন
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>
+
+      {/* Signature Modal */}
+      {onUpdateSignature && (
+        <SignatureModal
+          isOpen={isSignModalOpen}
+          onClose={() => setIsSignModalOpen(false)}
+          currentSignature={personalInfo.signatureUrl || ''}
+          candidateName={`${personalInfo.firstName} ${personalInfo.lastName}`}
+          onSave={(dataUrl) => onUpdateSignature(dataUrl)}
+        />
+      )}
     </div>
   );
 };

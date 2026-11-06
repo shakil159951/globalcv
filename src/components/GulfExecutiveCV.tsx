@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CandidateProfile } from '../types';
-import { Mail, Phone, MapPin, Globe, Calendar, User, ShieldCheck, CheckCircle2, Award, Car } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe, Calendar, User, ShieldCheck, CheckCircle2, Award, Car, PenTool } from 'lucide-react';
+import { SignatureModal } from './SignatureModal';
 
 interface GulfExecutiveCVProps {
   profile: CandidateProfile;
+  onUpdateSignature?: (url: string) => void;
 }
 
-export const GulfExecutiveCV: React.FC<GulfExecutiveCVProps> = ({ profile }) => {
+export const GulfExecutiveCV: React.FC<GulfExecutiveCVProps> = ({ profile, onUpdateSignature }) => {
+  const [isSignModalOpen, setIsSignModalOpen] = useState(false);
   const { personalInfo, summary, experiences, education, trainings, skills, languages, drivingMobility, additionalCertifications } = profile;
 
   return (
@@ -231,14 +234,57 @@ export const GulfExecutiveCV: React.FC<GulfExecutiveCVProps> = ({ profile }) => 
             <p>I hereby declare that all the information stated above is authentic and complete to the best of my knowledge.</p>
             <p className="font-semibold text-slate-800 mt-1">Candidate: {personalInfo.firstName} {personalInfo.lastName}</p>
           </div>
-          <div className="text-right">
-            <div className="w-32 border-b border-slate-400 pb-1 text-[11px] text-slate-500 font-mono">
-              [Signature on File]
-            </div>
+          <div className="text-right flex flex-col items-end">
+            {personalInfo.signatureUrl && personalInfo.showSignature !== false ? (
+              <div className="relative group flex flex-col items-end">
+                <img
+                  src={personalInfo.signatureUrl}
+                  alt="Signature"
+                  className="h-12 max-w-[140px] object-contain filter contrast-125 mb-1"
+                />
+                <div className="w-32 border-b border-slate-700"></div>
+                {onUpdateSignature && (
+                  <button
+                    type="button"
+                    onClick={() => setIsSignModalOpen(true)}
+                    className="no-print opacity-0 group-hover:opacity-100 text-[10px] text-blue-700 hover:underline mt-0.5 transition-opacity"
+                  >
+                    স্বাক্ষর পরিবর্তন
+                  </button>
+                )}
+              </div>
+            ) : (
+              <div className="flex flex-col items-end">
+                {onUpdateSignature && (
+                  <button
+                    type="button"
+                    onClick={() => setIsSignModalOpen(true)}
+                    className="no-print mb-1 px-2.5 py-1 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 rounded text-[11px] font-semibold flex items-center gap-1 transition-colors"
+                  >
+                    <PenTool className="w-3 h-3 text-amber-700" />
+                    <span>+ স্বাক্ষর আপলোড</span>
+                  </button>
+                )}
+                <div className="w-32 border-b border-slate-400 pb-1 text-[11px] text-slate-500 font-mono">
+                  [Signature on File]
+                </div>
+              </div>
+            )}
             <p className="text-[10px] text-slate-400 mt-0.5">Dhaka, Bangladesh</p>
           </div>
         </div>
       </div>
+
+      {/* Signature Modal */}
+      {onUpdateSignature && (
+        <SignatureModal
+          isOpen={isSignModalOpen}
+          onClose={() => setIsSignModalOpen(false)}
+          currentSignature={personalInfo.signatureUrl || ''}
+          candidateName={`${personalInfo.firstName} ${personalInfo.lastName}`}
+          onSave={(dataUrl) => onUpdateSignature(dataUrl)}
+        />
+      )}
     </div>
   );
 };
